@@ -10,6 +10,7 @@ font-family: 'Merriweather', serif; */
 
 body {
    font-family: 'Inter', sans-serif;
+   font-weight: 400;
    margin: 0;
    padding: 0;
 }
@@ -35,38 +36,17 @@ body {
 }
 
 
-.header-container {
-   display: flex;
-}
-
 .bg {
    background-image: url('assets/img/bg.jpg');
    background-repeat: no-repeat;
-   background-size: cover;
+   background-size: 1440px;
    position: relative;
+   background-position: center 0;
 }
 
 .bg-90px {
    background-position: center -90px;
 }
-
-.header-logo {
-   margin: 20px;
-   height: 50px;
-}
-
-.header-nav {
-   margin-left: auto;
-}
-
-.nav-list {
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   list-style: none;
-}
-
-
 
 
 .container {
@@ -76,8 +56,10 @@ body {
 
 
 
-/* ======================== */
-.header {
+/* ========= header =============== */
+
+.header-container {
+   display: flex;
 }
 
 .header-swith-language {
@@ -98,34 +80,61 @@ body {
    color: #bdae82;;
 }
 
+.header-logo {
+   margin: 20px;
+   height: 50px;
+}
 
+.header-nav {
+   margin-left: auto;
+}
 
-/* ======================== */
+.nav-list {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   list-style: none;
+}
+
+/* ========= main =============== */
 .main {
 }
 
-
-
-
-/* ======================== */
 .main-hero {
    padding-top: 160px;
+   height: 820px;
+}
+
+/* ========= hero =============== */
+.hero {
+   padding-left: 80px;
+   width: 500px;
+   overflow: hidden;
+}
+
+.hero-text {
+   font-size: 20px;
+   line-height: 40px;
+   color: #ffffff;
+   padding-bottom: 25px;
 }
 
 
 
 
-
-/* ======================== */
+/* ========= footer =============== */
 .footer {
 }
 
 
 
 
-/* ======================== */
+/* ========= h1 icon btn =============== */
 h1 {
    margin: 0;
+   font-family: 'Merriweather', serif;
+   font-size: 60px;
+   padding-bottom: 10px;
 }
 
 .icon {
@@ -134,4 +143,17 @@ h1 {
 
 .icon:hover {
    fill: #bdae82;
+}
+
+.btn {
+   width: 220px;
+   height: 55px;
+   background-color: #bdae82;
+   color: #000000;
+   font-size: 20px;
+   line-height: 40px; 
+}
+
+.btn:hover {
+   color: #ffffff;
 }
