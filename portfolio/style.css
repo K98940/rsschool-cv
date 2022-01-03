@@ -20,7 +20,6 @@ body {
    max-width: 1440px;
 
    margin: 0 auto;
-   padding: 0 20px;
 
    display: flex;
    flex-direction: column;
@@ -60,16 +59,11 @@ body {
 
 .header-container {
    display: flex;
-}
-
-.header-swith-language {
-   height: 50px;
-   width: 70px;
-   margin: 15px 20px 20px 20px;
+   padding: 20px 0 ;
 }
 
 .nav-link {
-   padding: 0 20px;
+   padding: 0 15px;
    line-height: 50px;
    text-decoration: none;
    font-size: 20px;
@@ -77,11 +71,11 @@ body {
 }
 
 .nav-link:hover {
-   color: #bdae82;;
+   color: #bdae82;
 }
 
 .header-logo {
-   margin: 20px;
+   margin-left: 20px;
    height: 50px;
 }
 
@@ -96,12 +90,22 @@ body {
    list-style: none;
 }
 
+.nav-link__last {
+   padding-right: 11px;
+}
+
+.header-swith-language {
+   height: 50px;
+   width: 70px;
+   margin: 0 20px 0 20px;
+}
+
 /* ========= main =============== */
 .main {
 }
 
 .main-hero {
-   padding-top: 160px;
+   padding-top: 180px;
    height: 820px;
 }
 
@@ -116,7 +120,7 @@ body {
    font-size: 20px;
    line-height: 40px;
    color: #ffffff;
-   padding-bottom: 25px;
+   padding-bottom: 8px;
 }
 
 
@@ -129,12 +133,12 @@ body {
 
 
 
-/* ========= h1 icon btn =============== */
+/* ========= h1 icon btn ul =============== */
 h1 {
    margin: 0;
    font-family: 'Merriweather', serif;
    font-size: 60px;
-   padding-bottom: 10px;
+   padding-bottom: 13px;
 }
 
 .icon {
@@ -156,4 +160,8 @@ h1 {
 
 .btn:hover {
    color: #ffffff;
+}
+
+ul {
+   margin: 0;
 }
