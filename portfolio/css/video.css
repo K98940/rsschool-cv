@@ -3,8 +3,10 @@
    display: flex;
    justify-content: center;
    align-items: center;
-   height: 705px;
-   padding: 0;
+   height: 765px;
+   padding: 64px 20px 0px 20px;
 }
 
-.video-btn {}
+.video-btn {
+   position: absolute;
+}
