@@ -3,6 +3,7 @@ font-family: 'Merriweather', serif; */
 @import "css/skills.css";
 @import "css/portfolio.css";
 @import "css/video.css";
+@import "css/price.css";
 
 * {
    box-sizing: border-box;
