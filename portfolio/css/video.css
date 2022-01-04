@@ -1,0 +1,10 @@
+.video-wrapper {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 705px;
+   padding: 0;
+}
+
+.video-btn {}
