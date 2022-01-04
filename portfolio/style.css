@@ -1,5 +1,7 @@
 /* font-family: 'Inter', sans-serif;
 font-family: 'Merriweather', serif; */
+@import "css/skills.css";
+
 * {
    box-sizing: border-box;
  }
@@ -13,6 +15,7 @@ body {
    font-weight: 400;
    margin: 0;
    padding: 0;
+   background-color: black;
 }
 
 .wrapper {
@@ -105,14 +108,14 @@ body {
 }
 
 .main-hero {
-   padding-top: 180px;
+   padding-top: 182px;
    height: 820px;
 }
 
 /* ========= hero =============== */
 .hero {
    padding-left: 80px;
-   width: 500px;
+   width: 550px;
    overflow: hidden;
 }
 
@@ -120,9 +123,8 @@ body {
    font-size: 20px;
    line-height: 40px;
    color: #ffffff;
-   padding-bottom: 8px;
+   padding-bottom: 5px;
 }
-
 
 
 
@@ -141,6 +143,24 @@ h1 {
    padding-bottom: 13px;
 }
 
+h2 {
+   display: inline-block;
+   position: relative;
+   overflow: hidden;
+   margin: 0;
+   padding: 0 30px;
+   left: 50%;
+   top: 50%;
+   transform: translate(-50%, -50%);
+   font-family: 'Merriweather', serif;
+   font-size: 40px;
+   font-weight: bold;
+   line-height: 80px;
+   text-align: center;
+   color: #bdae82;
+   background-color: #000000;
+}
+
 .icon {
    fill: #ffffff;
 }
@@ -150,9 +170,12 @@ h1 {
 }
 
 .btn {
+   border: 0;
+   cursor: pointer;
    width: 220px;
    height: 55px;
    background-color: #bdae82;
+   font-family: inherit;
    color: #000000;
    font-size: 20px;
    line-height: 40px; 
@@ -164,4 +187,33 @@ h1 {
 
 ul {
    margin: 0;
+}
+
+.visually-hidden {
+   position: absolute;
+   top: -100%;
+}
+
+.section-title {
+   width: 700px;
+   height: 80px;
+   margin: 0 auto;
+}
+
+.section-title::before {
+   content: '';
+   display: block;
+   position: relative;
+   width: 700px;
+   height: 4px;
+   top: 40px;
+   background-color: #bdae82;
+}
+
+.title-wrapper {
+   position: relative;
+   display: block;
+   margin: 0 auto;
+   height: 80px;
+   background-color: #000000;
 }
