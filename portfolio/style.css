@@ -35,6 +35,7 @@ body {
 
 .section {
    color: #ffffff;
+   padding-top: 100px;
 }
 
 
@@ -148,7 +149,7 @@ h2 {
    position: relative;
    overflow: hidden;
    margin: 0;
-   padding: 0 30px;
+   padding: 0 22px;
    left: 50%;
    top: 50%;
    transform: translate(-50%, -50%);
@@ -205,7 +206,7 @@ ul {
    display: block;
    position: relative;
    width: 700px;
-   height: 4px;
+   height: 2px;
    top: 40px;
    background-color: #bdae82;
 }
