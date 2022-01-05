@@ -17,7 +17,7 @@
    height: 548px;
    padding: 43px 10px 0px 10px;
 
-   outline: 3px solid #bdae82;
+   outline: 3px solid var(--color-gold);
 }
 
 .price-item-titile {
@@ -36,7 +36,7 @@
    line-height: 48px;
    text-align: center;
    padding-bottom: 20px;
-   color: #bdae82;
+   color: var(--color-gold);
 }
 
 .price-item-text {
@@ -46,7 +46,7 @@
    line-height: 36px;
    text-align: center;
    padding-bottom: 40px;
-   color: #ffffff;
+   color: var(--color-white);
 }
 
 .price-item-text span{

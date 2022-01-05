@@ -28,7 +28,7 @@
 
 /* ========= общий класс для всех инпутов ========= */
 .input { 
-   outline: 2px solid #bdae82;
+   outline: 2px solid var(--color-gold);
 }
 
 .input input,
@@ -38,7 +38,7 @@
    background-color: rgba(0, 0, 0, 0.1);
    
    font-family: 'Inter', sans-serif;
-   color: #bdae82;
+   color: var(--color-gold);
    font-size: 20px;
    line-height: 40px;
    resize: none;
@@ -49,12 +49,12 @@
 .input textarea:hover,
 .input input:focus,
 .input textarea:focus{
-   outline: 3px solid #bdae82;
+   outline: 3px solid var(--color-gold);
 }
 
 .input input::-webkit-input-placeholder,
 .input textarea::-webkit-input-placeholder{
-   color: #bdae82;
+   color: var(--color-gold);
 }
 /* ================== */
 

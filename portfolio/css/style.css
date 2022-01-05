@@ -1,10 +1,21 @@
+
 /* font-family: 'Inter', sans-serif;
 font-family: 'Merriweather', serif; */
-@import "css/skills.css";
-@import "css/portfolio.css";
-@import "css/video.css";
-@import "css/price.css";
-@import "css/contacts.css";
+
+@import "header.css";
+@import "hero.css";
+@import "skills.css";
+@import "portfolio.css";
+@import "video.css";
+@import "price.css";
+@import "contacts.css";
+@import "footer.css";
+
+:root {
+   --color-gold: #bdae82;
+   --color-black: #000000;
+   --color-white: #ffffff;
+}
 
 * {
    box-sizing: border-box;
@@ -19,7 +30,7 @@ body {
    font-weight: 400;
    margin: 0;
    padding: 0;
-   background-color: black;
+   background-color: var(--color-black);
 }
 
 .wrapper {
@@ -39,13 +50,13 @@ body {
 
 .section {
    position: relative;
-   color: #ffffff;
+   color: var(--color-white);
    padding-top: 100px;
 }
 
 
 .bg {
-   background-image: url('assets/img/bg.jpg');
+   background-image: url('../assets/img/bg.jpg');
    background-repeat: no-repeat;
    background-size: 1440px;
    position: relative;
@@ -55,90 +66,6 @@ body {
 .bg-90px {
    background-position: center -90px;
 }
-
-
-.container {
-}
-
-
-
-
-
-/* ========= header =============== */
-
-.header-container {
-   display: flex;
-   padding: 20px 0 ;
-}
-
-.nav-link {
-   padding: 0 15px;
-   line-height: 50px;
-   text-decoration: none;
-   font-size: 20px;
-   color: #FFFFFF;
-}
-
-.nav-link:hover {
-   color: #bdae82;
-}
-
-.header-logo {
-   margin-left: 20px;
-   height: 50px;
-}
-
-.header-nav {
-   margin-left: auto;
-}
-
-.nav-list {
-   display: flex;
-   justify-content: flex-end;
-   align-items: center;
-   list-style: none;
-}
-
-.nav-link__last {
-   padding-right: 11px;
-}
-
-.header-swith-language {
-   height: 50px;
-   width: 70px;
-   margin: 0 20px 0 20px;
-}
-
-/* ========= main =============== */
-.main {
-}
-
-.main-hero {
-   padding-top: 182px;
-   height: 820px;
-}
-
-/* ========= hero =============== */
-.hero {
-   padding-left: 80px;
-   width: 550px;
-   overflow: hidden;
-}
-
-.hero-text {
-   font-size: 20px;
-   line-height: 40px;
-   color: #ffffff;
-   padding-bottom: 5px;
-}
-
-
-
-/* ========= footer =============== */
-.footer {
-}
-
-
 
 
 /* ========= h1 icon btn ul =============== */
@@ -163,8 +90,8 @@ h2 {
    font-weight: bold;
    line-height: 80px;
    text-align: center;
-   color: #bdae82;
-   background-color: #000000;
+   color: var(--color-gold);
+   background-color: var(--color-black);
 }
 
 h3 {
@@ -173,15 +100,15 @@ h3 {
    font-size: 40px;
    font-weight: bold;
    line-height: 80px;
-   color: #bdae82;
+   color: var(--color-gold);
 }
 
 .icon {
-   fill: #ffffff;
+   fill: var(--color-white);
 }
 
 .icon:hover {
-   fill: #bdae82;
+   fill: var(--color-gold);
 }
 
 .btn {
@@ -189,15 +116,15 @@ h3 {
    cursor: pointer;
    width: 220px;
    height: 55px;
-   background-color: #bdae82;
+   background-color: var(--color-gold);
    font-family: inherit;
-   color: #000000;
+   color: var(--color-black);
    font-size: 20px;
    line-height: 40px; 
 }
 
 .btn:hover {
-   color: #ffffff;
+   color: var(--color-white);
 }
 
 ul {
@@ -222,7 +149,7 @@ ul {
    width: 700px;
    height: 2px;
    top: 40px;
-   background-color: #bdae82;
+   background-color: var(--color-gold);
 }
 
 .title-wrapper {
@@ -230,5 +157,9 @@ ul {
    display: block;
    margin: 0 auto;
    height: 80px;
-   background-color: #000000;
+   background-color: var(--color-black);
+}
+
+a {
+   text-decoration: none;
 }

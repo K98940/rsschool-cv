@@ -1,0 +1,31 @@
+.footer {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   position: relative;
+   height: 150px;
+}
+
+.footter-text {
+   font-family: 'Inter', sans-serif;
+   font-size: 20px;
+   font-weight: normal;
+   line-height: 50px;
+   color: var(--color-white);
+   text-decoration: none;
+}
+.footter-text:hover {
+   color: var(--color-gold);
+}
+
+.copyright {
+   word-spacing: 20px;
+}
+
+.social-wrapper {
+   position: relative;
+}
+
+.social__margin {
+   margin-right: 20px;
+}
