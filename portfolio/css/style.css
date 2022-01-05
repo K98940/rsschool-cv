@@ -112,7 +112,7 @@ h3 {
 }
 
 .btn {
-   border: 0;
+   border: 1px solid var(--color-gold);
    cursor: pointer;
    width: 220px;
    height: 55px;
@@ -125,6 +125,16 @@ h3 {
 
 .btn:hover {
    color: var(--color-white);
+}
+
+.btn__skills {
+   background-color: var(--color-black);
+   color: var(--color-gold);
+}
+
+.btn__skills:hover {
+   background-color: var(--color-gold);
+   color: var(--color-black);
 }
 
 ul {
