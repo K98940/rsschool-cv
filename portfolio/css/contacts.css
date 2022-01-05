@@ -11,7 +11,6 @@
    width: 450px;
    height: 445px;
    margin-left: auto;
-   /* outline: 2px solid white; */
 }
 
 .contacts-title {
@@ -25,30 +24,40 @@
    position: relative;
    padding-top: 40px;
    height: 400px;
-
-   /* outline: 2px solid rgb(228, 231, 27); */
 }
 
-.contacts-mail {
+/* ========= общий класс для всех инпутов ========= */
+.input { 
    outline: 2px solid #bdae82;
 }
 
-.contacts-mail input:hover,
-.contacts-mail input:focus{
-   outline: 4px solid #bdae82;
-}
-
-.contacts-mail input{
+.input input,
+.input textarea {
    padding: 10px;
    width: 100%;
-   background-color: rgba(0, 0, 0, 0.5);
+   background-color: rgba(0, 0, 0, 0.1);
    
    font-family: 'Inter', sans-serif;
    color: #bdae82;
    font-size: 20px;
    line-height: 40px;
+   resize: none;
+   border: none;
 }
 
-.contacts-mail input::-webkit-input-placeholder{
+.input input:hover,
+.input textarea:hover,
+.input input:focus,
+.input textarea:focus{
+   outline: 3px solid #bdae82;
+}
+
+.input input::-webkit-input-placeholder,
+.input textarea::-webkit-input-placeholder{
    color: #bdae82;
+}
+/* ================== */
+
+.input__margin {
+   margin-bottom: 30px;
 }
