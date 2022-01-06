@@ -1,3 +1,6 @@
+.section-portfolio {
+   padding-top: 100px;
+}
 .portfolio-btn-wrapper {
    position: relative;
    margin: 0 auto;
@@ -8,6 +11,7 @@
 .portfolio-items {
    display: flex;
    flex-wrap: wrap;
-   padding-top: 60px;
+   padding-top: 61px;
+   padding-left: 20px;
    gap: 25px;
 }

@@ -1,10 +1,14 @@
+.section-price {
+   padding-top: 100px;
+}
+
 .price-wrapper {
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
-   gap: 25px;
+   gap: 27px;
    height: 608px;
-   padding-top: 60px;
+   padding: 65px 22px 0px 22px;
 }
 
 .price-item {
@@ -13,8 +17,8 @@
    align-items: center;
 
    overflow: hidden;
-   width: 450px;
-   height: 548px;
+   width: 446px;
+   height: 500px;
    padding: 43px 10px 0px 10px;
 
    outline: 3px solid var(--color-gold);

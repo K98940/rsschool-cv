@@ -1,3 +1,7 @@
+.section-video {
+   padding-top: 95px;
+}
+
 .video-wrapper {
    position: relative;
    display: flex;
@@ -9,4 +13,9 @@
 
 .video-btn {
    position: absolute;
+}
+
+.video-btn a {
+   height: 130px;
+   width: 130px;
 }

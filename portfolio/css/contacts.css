@@ -1,6 +1,7 @@
 .section-contacts {
    position: relative;
    height: 700px;
+   margin-top: 62px;
    padding-top: 60px;
    padding-right: 20px;
    background-image: url('../assets/img/Contacts/contacts.jpg');
@@ -26,38 +27,44 @@
    height: 400px;
 }
 
-/* ========= общий класс для всех инпутов ========= */
 .input { 
    outline: 2px solid var(--color-gold);
 }
 
 .input input,
-.input textarea {
-   padding: 10px;
+.textarea {
+   padding: 10px 20px;
    width: 100%;
-   background-color: rgba(0, 0, 0, 0.1);
+   background-color: rgba(0, 0, 0, 0.3);
    
    font-family: 'Inter', sans-serif;
    color: var(--color-gold);
    font-size: 20px;
-   line-height: 40px;
+   line-height: 28px;
    resize: none;
    border: none;
 }
 
 .input input:hover,
-.input textarea:hover,
+.textarea:hover,
 .input input:focus,
-.input textarea:focus{
+.textarea:focus{
    outline: 3px solid var(--color-gold);
 }
 
 .input input::-webkit-input-placeholder,
-.input textarea::-webkit-input-placeholder{
+.textarea::-webkit-input-placeholder{
    color: var(--color-gold);
 }
-/* ================== */
 
 .input__margin {
-   margin-bottom: 30px;
+   margin-bottom: 23px;
+}
+
+.textarea {
+   height: 95px;
+}
+
+.contact-btn__padding {
+   padding-top: 7px;
 }

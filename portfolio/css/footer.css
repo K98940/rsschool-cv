@@ -4,6 +4,7 @@
    align-items: center;
    position: relative;
    height: 150px;
+   padding-left: 20px;
 }
 
 .footter-text {
@@ -19,11 +20,19 @@
 }
 
 .copyright {
-   word-spacing: 20px;
+   word-spacing: 15px;
 }
 
 .social-wrapper {
    position: relative;
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+}
+
+.social-wrapper a {
+   display: inline-block;
+   height: 100%;
 }
 
 .social__margin {

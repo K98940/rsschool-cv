@@ -4,7 +4,7 @@
 }
 
 .nav-link {
-   padding: 0 15px;
+   padding: 13px 15px;
    line-height: 50px;
    text-decoration: none;
    font-size: 20px;
@@ -14,6 +14,13 @@
 
 .nav-link:hover {
    color: var(--color-gold);
+}
+
+.focus:focus {
+   color: var(--color-gold);
+   outline: 1px solid var(--color-gold);
+   border-radius: 5px;
+   background-color: rgba(0, 0, 0, 0.3);
 }
 
 .header-logo {
@@ -30,6 +37,9 @@
    justify-content: flex-end;
    align-items: center;
    list-style: none;
+}
+
+.nav-list a {
 }
 
 .nav-link__last {

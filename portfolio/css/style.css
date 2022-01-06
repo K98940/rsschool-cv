@@ -116,9 +116,10 @@ h3 {
    cursor: pointer;
    width: 220px;
    height: 55px;
+   padding: 7px 20px;
    background-color: var(--color-gold);
-   font-family: inherit;
    color: var(--color-black);
+   font-family: inherit;
    font-size: 20px;
    line-height: 40px; 
 }
@@ -127,14 +128,13 @@ h3 {
    color: var(--color-white);
 }
 
-.btn__skills {
+.btn__portfolio {
    background-color: var(--color-black);
    color: var(--color-gold);
 }
 
-.btn__skills:hover {
-   background-color: var(--color-gold);
-   color: var(--color-black);
+.btn__portfolio:hover {
+   color: var(--color-white);
 }
 
 ul {
@@ -142,8 +142,17 @@ ul {
 }
 
 .visually-hidden {
+   border: 0; 
+   clip: rect(0 0 0 0); 
+   -webkit-clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+   clip-path: polygon(0px 0px, 0px 0px, 0px 0px);
+   height: 1px; 
+   margin: -1px;
+   overflow: hidden;
+   padding: 0;
    position: absolute;
-   top: -100%;
+   width: 1px;
+   white-space: nowrap;
 }
 
 .section-title {
