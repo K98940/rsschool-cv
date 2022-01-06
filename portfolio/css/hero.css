@@ -1,19 +1,25 @@
 .main-hero {
-   padding-top: 182px;
    height: 820px;
 }
 
 .hero {
    padding-left: 80px;
+   padding-top: 182px;
    width: 550px;
    overflow: hidden;
 }
 
 .hero-text {
+   position: relative;
+   overflow: hidden;
    font-size: 20px;
    line-height: 40px;
    color: var(--color-white);
-   padding-bottom: 5px;
+   padding-top: 33px;
+
+   max-height: 350px;
 }
 
-
+.hero__padding {
+   padding-top: 25px;
+}
