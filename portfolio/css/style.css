@@ -55,15 +55,6 @@ body {
    color: var(--color-white);
 }
 
-
-.bg {
-   background-image: url('../assets/img/bg.jpg');
-   background-repeat: no-repeat;
-   background-size: 1440px;
-   position: relative;
-   background-position: center 0;
-}
-
 .bg-90px {
    background-position: center -90px;
 }
@@ -139,6 +130,7 @@ h3 {
 
 ul {
    margin: 0;
+   padding: 0;
 }
 
 .visually-hidden {

@@ -28,10 +28,29 @@
    display: flex;
    justify-content: flex-end;
    align-items: center;
+   width: 188px;
+   height: 50px;
+   padding-right: 20px;
 }
 
-.social-wrapper a {
+.social-li {
+   width: 35px;
+   height: 28px;
+   margin-left: 20px;
+}
+
+.social-svg {
+   fill: var(--color-white);
+}
+
+.social-svg:hover {
+   fill: var(--color-gold);
+}
+
+
+li a {
    display: inline-block;
+   width: 100%;
    height: 100%;
 }
 
