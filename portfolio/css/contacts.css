@@ -29,6 +29,7 @@
 
 .input { 
    outline: 2px solid var(--color-gold);
+   transition: 0.2s;
 }
 
 .input input,
@@ -43,6 +44,10 @@
    line-height: 28px;
    resize: none;
    border: none;
+   transition: 0.2s;
+}
+.textarea {
+   height: 95px;
 }
 
 .input input:hover,
@@ -59,10 +64,6 @@
 
 .input__margin {
    margin-bottom: 23px;
-}
-
-.textarea {
-   height: 95px;
 }
 
 .contact-btn__padding {

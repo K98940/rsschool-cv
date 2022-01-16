@@ -13,9 +13,10 @@
 
 .video-btn {
    position: absolute;
+   background-color: transparent;
+   border: none;
 }
 
-.video-btn a {
-   height: 130px;
-   width: 130px;
+.video-btn:hover {
+   cursor: pointer;
 }

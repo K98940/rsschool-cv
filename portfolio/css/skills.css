@@ -16,25 +16,24 @@
    height: 240px;
    margin: 0 20px;
 
-   /* outline: 1px solid white; */
    background-position: center top;
    background-repeat: no-repeat;
 }
 
 .skills-item:nth-child(1) {
-   background-image: url('/portfolio/assets/img/skills/camera.png');
+   background-image: url('../assets/img/skills/camera.png');
 }
 
 .skills-item:nth-child(2) {
-   background-image: url('/portfolio/assets/img/skills/video.png');
+   background-image: url('../assets/img/skills/video.png');
 }
 
 .skills-item:nth-child(3) {
-   background-image: url('/portfolio/assets/img/skills/image.png');
+   background-image: url('../assets/img/skills/image.png');
 }
 
 .skills-item:nth-child(4) {
-   background-image: url('/portfolio/assets/img/skills/mic.png');
+   background-image: url('../assets/img/skills/mic.png');
 }
 
 .item-title {

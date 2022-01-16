@@ -2,11 +2,25 @@
    height: 820px;
 }
 
+@media (max-width:768px) {
+   .main-hero {
+      height: 500px;
+   }
+}
+
 .hero {
    padding-left: 80px;
    padding-top: 182px;
    width: 550px;
    overflow: hidden;
+}
+
+@media (max-width:768px) {
+   .hero {
+      width: 450px;
+      padding-top: 78px;
+      padding-left: 60px;
+   }
 }
 
 .hero-text {
@@ -16,10 +30,23 @@
    line-height: 40px;
    color: var(--color-white);
    padding-top: 33px;
-
    max-height: 350px;
+}
+
+@media (max-width:768px) {
+   .hero-text {
+      font-size: 20px;
+      line-height: 24.2px;
+      padding-top: 20px;
+      }
 }
 
 .hero__padding {
    padding-top: 25px;
+}
+
+@media (max-width:768px) {
+   .hero__padding {
+      padding-top: 60px;
+   }
 }

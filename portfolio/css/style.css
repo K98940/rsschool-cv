@@ -4,6 +4,7 @@ font-family: 'Inter', sans-serif;
 font-family: 'Merriweather', serif;
 */
 
+@import "main/buttons.css";
 @import "header.css";
 @import "hero.css";
 @import "skills.css";
@@ -40,10 +41,18 @@ body {
    max-width: 1440px;
 
    margin: 0 auto;
+   overflow: hidden;
 
    display: flex;
    flex-direction: column;
    justify-content: flex-start;
+}
+
+@media (max-width:768px){
+   .wrapper {
+      max-width: 768px;
+      min-height: 0;
+   }
 }
 
 .section-title {
@@ -66,6 +75,14 @@ h1 {
    font-family: 'Merriweather', serif;
    font-size: 60px;
 }
+
+@media (max-width:768px) {
+   h1 {
+      font-size: 32px;
+      line-height: 64px;
+   }
+}
+
 
 h2 {
    display: inline-block;
@@ -96,36 +113,11 @@ h3 {
 
 .icon {
    fill: var(--color-white);
+   transition: 0.2s;
 }
 
 .icon:hover {
    fill: var(--color-gold);
-}
-
-.btn {
-   border: 1px solid var(--color-gold);
-   cursor: pointer;
-   width: 220px;
-   height: 55px;
-   padding: 7px 20px;
-   background-color: var(--color-gold);
-   color: var(--color-black);
-   font-family: inherit;
-   font-size: 20px;
-   line-height: 40px; 
-}
-
-.btn:hover {
-   color: var(--color-white);
-}
-
-.btn__portfolio {
-   background-color: var(--color-black);
-   color: var(--color-gold);
-}
-
-.btn__portfolio:hover {
-   color: var(--color-white);
 }
 
 ul {
