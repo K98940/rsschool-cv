@@ -20,3 +20,28 @@
 .video-btn:hover {
    cursor: pointer;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+   .section-video {
+      padding-top: 78px;
+   }
+   
+   .video-wrapper {
+      height: 468px;
+      padding: 57px 0 0 0;
+   }
+
+   .video-wrapper img{
+      height: 100%;
+      width: 100%;
+   }   
+
+   .video-btn svg{
+      width: 64px;
+      height: 64px;
+   }
+}
