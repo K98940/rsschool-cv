@@ -57,3 +57,32 @@
    display: block;
  }
 
+
+
+
+
+@media (max-width: 768px) {
+   .section-price {
+      padding-top: 80px;
+   }
+     
+   .price-wrapper {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 55px;
+      height: 1905px;
+      padding: 55px 0 0 0;
+   }
+   
+   .price-item {
+      width: 415px;
+      height: 500px;
+      padding-top: 40px;
+
+   }
+
+   .price-item-titile {
+      padding-bottom: 20px;
+   }
+}
