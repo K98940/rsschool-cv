@@ -71,7 +71,7 @@
       justify-content: flex-start;
       align-items: center;
       gap: 55px;
-      height: 1905px;
+      height: 1750px;
       padding: 55px 0 0 0;
    }
    
@@ -85,4 +85,5 @@
    .price-item-titile {
       padding-bottom: 20px;
    }
+
 }

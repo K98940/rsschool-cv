@@ -101,15 +101,6 @@ h2 {
    background-color: var(--color-black);
 }
 
-h3 {
-   margin: 0;
-   font-family: 'Merriweather', serif;
-   font-size: 40px;
-   font-weight: bold;
-   line-height: 80px;
-   color: var(--color-gold);
-}
-
 .icon {
    fill: var(--color-white);
    transition: 0.2s;
@@ -178,4 +169,5 @@ p {
    .section-title {
       width: 364px;
    }
+
 }
