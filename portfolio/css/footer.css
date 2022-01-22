@@ -57,3 +57,32 @@ li a {
 .social__margin {
    margin-right: 20px;
 }
+
+
+
+
+
+@media (max-width: 768px) {
+   .footer {
+      flex-direction: column;
+      justify-content: flex-start;
+      height: 190px;
+      padding-left: 0;
+      padding-top: 30px;
+   }
+
+   .footter-text {
+      line-height: 25px;
+   }
+   
+   .copyright {
+      padding-bottom: 15px;
+   }
+
+   .social-wrapper {
+      justify-content: center;
+      padding-right: 20px;
+      margin-top: 20px;
+   }
+   
+}
