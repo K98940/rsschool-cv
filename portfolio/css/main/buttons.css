@@ -24,3 +24,8 @@
 .btn__portfolio:hover {
    color: var(--color-white);
 }
+
+.btn__active {
+   background-color: var(--color-gold);
+   color: var(--color-black);
+}

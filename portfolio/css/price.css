@@ -4,7 +4,6 @@
 
 .price-wrapper {
    display: flex;
-   flex-wrap: wrap;
    justify-content: space-between;
    gap: 27px;
    height: 608px;
@@ -68,6 +67,7 @@
      
    .price-wrapper {
       flex-direction: column;
+      flex-wrap: wrap;
       justify-content: flex-start;
       align-items: center;
       gap: 55px;
