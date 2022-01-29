@@ -34,6 +34,9 @@ font-family: 'Merriweather', serif;
 
    --color-title: #bdae82;
 
+   --color-placeholder: #ffffff60;
+   --color-placeholder-hover: #bdae82;
+
    --color-gold: #bdae82;
    --color-black: #000000;
    --color-white: #ffffff;

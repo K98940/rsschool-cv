@@ -47,7 +47,7 @@ h3 {
    background-color: var(--input-background);
    
    font-family: 'Inter', sans-serif;
-   color: var(--color-gold);
+   color: var(--color-font);
    font-size: 20px;
    line-height: 28px;
    resize: none;
@@ -62,12 +62,12 @@ h3 {
 .textarea:hover,
 .input input:focus,
 .textarea:focus{
-   outline: 3px solid var(--color-gold);
+   outline: 4px solid var(--color-placeholder-hover);
 }
 
 .input input::-webkit-input-placeholder,
 .textarea::-webkit-input-placeholder{
-   color: var(--color-font);
+   color: var(--color-placeholder);
 }
 
 .input__margin {
