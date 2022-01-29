@@ -12,7 +12,7 @@
    font-size: 20px;
    font-weight: normal;
    line-height: 50px;
-   color: var(--color-white);
+   color: var(--color-font);
    text-decoration: none;
 }
 .footter-text:hover {
@@ -37,10 +37,11 @@
    width: 35px;
    height: 28px;
    margin-left: 20px;
+   list-style: none;
 }
 
 .social-svg {
-   fill: var(--color-white);
+   fill: var(--color-icon);
 }
 
 .social-svg:hover {

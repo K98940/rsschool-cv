@@ -15,6 +15,25 @@ font-family: 'Merriweather', serif;
 @import "footer.css";
 
 :root {
+   --background-color: #000000;
+   --background-image: url("../assets/img/bg.jpg");
+   --background-image-768: url("../assets/img/bg_768.jpg");
+   --background-contacts: url("../assets/img/Contacts/contacts.jpg");
+   --background-contacts-768: url('../assets/img/Contacts/contacts_768.jpg');
+   --color-icon: #ffffff;
+   --color-font: #ffffff;
+
+   --btn-font: #000000;
+   --btn-font-hover: #ffffff;
+   --btn-background: #bdae82;
+   --btn-background-hover: #bdae82;
+   --btn-2-background: #000000;
+   --btn-2-background-hover: #000000;
+
+   --input-background: #0000006e;
+
+   --color-title: #bdae82;
+
    --color-gold: #bdae82;
    --color-black: #000000;
    --color-white: #ffffff;
@@ -33,7 +52,7 @@ body {
    font-weight: 400;
    margin: 0;
    padding: 0;
-   background-color: var(--color-black);
+   background-color: var(--background-color);
 }
 
 .wrapper {
@@ -63,12 +82,12 @@ body {
    width: 700px;
    height: 2px;
    top: 40px;
-   background-color: var(--color-gold);
+   background-color: var(--color-title);
 }
 
 .section {
    position: relative;
-   color: var(--color-white);
+   color: var(--color-font);
 }
 
 .bg-90px {
@@ -97,12 +116,12 @@ h2 {
    font-weight: bold;
    line-height: 80px;
    text-align: center;
-   color: var(--color-gold);
-   background-color: var(--color-black);
+   color: var(--color-title);
+   background-color: var(--background-color);
 }
 
 .icon {
-   fill: var(--color-white);
+   fill: var(--color-icon);
    transition: 0.2s;
 }
 
@@ -134,7 +153,7 @@ ul {
    display: block;
    margin: 0 auto;
    height: 80px;
-   background-color: var(--color-black);
+   background-color: var(--background-color);
 }
 
 a {

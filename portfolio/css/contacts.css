@@ -4,7 +4,7 @@
    margin-top: 62px;
    padding-top: 60px;
    padding-right: 20px;
-   background-image: url('../assets/img/Contacts/contacts.jpg');
+   background-image: var(--background-contacts);
 }
 
 .contacts-container {
@@ -20,7 +20,7 @@ h3 {
    font-size: 40px;
    font-weight: bold;
    line-height: 80px;
-   color: var(--color-gold);
+   color: var(--color-font);
 }
 
 .contacts-title {
@@ -44,7 +44,7 @@ h3 {
 .textarea {
    padding: 10px 20px;
    width: 100%;
-   background-color: rgba(0, 0, 0, 0.3);
+   background-color: var(--input-background);
    
    font-family: 'Inter', sans-serif;
    color: var(--color-gold);
@@ -67,7 +67,7 @@ h3 {
 
 .input input::-webkit-input-placeholder,
 .textarea::-webkit-input-placeholder{
-   color: var(--color-gold);
+   color: var(--color-font);
 }
 
 .input__margin {
@@ -87,7 +87,7 @@ h3 {
       margin-top: 0;
       padding-top: 60px;
       padding-right: 0;
-      background-image: url('../assets/img/Contacts/contacts_768.jpg');
+      background-image: var(--background-contacts-768);
    }
    
    .contacts-container {
