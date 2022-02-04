@@ -1,0 +1,35 @@
+.button {
+   border: 1px solid var(--btn-background-hover);
+   box-shadow: 0 4px 4px #00000063;
+   cursor: pointer;
+   width: 220px;
+   height: 55px;
+   padding: 7px 20px;
+   background-color: var(--btn-background);
+   color: var(--btn-font);
+   font-family: inherit;
+   font-size: 20px;
+   line-height: 40px; 
+   transition: 0.2s;
+}
+
+.button:hover {
+   color: var(--btn-font-hover);
+   background-color: var(--btn-background-hover);
+}
+
+.btn__portfolio {
+   border: 2px solid var(--color-gold);
+   background-color: var(--btn-2-background);
+   color: var(--color-font);
+}
+
+.btn__portfolio:hover {
+   color: var(--color-white);
+   /* background-color: var(--btn-2-background-hover); */
+}
+
+.btn__active {
+   background-color: var(--btn-background-hover);
+   color: var(--btn-2-background);
+}

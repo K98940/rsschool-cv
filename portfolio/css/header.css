@@ -1,0 +1,249 @@
+.header-container {
+   display: flex;
+   padding: 20px 0 ;
+   height: 90px;
+}
+
+.bg {
+   background-image: var(--background-image);
+   background-repeat: no-repeat;
+   background-size: 1440px;
+   position: relative;
+   background-position: center 0;
+}
+
+.header-logo {
+   margin-left: 20px;
+   height: 50px;
+}
+
+.header-logo a{
+   display: inline-block;
+   width: 100%;
+   height: 100%;
+}
+
+
+.header-nav-wrapper {
+   position: relative;
+   display: flex;
+   justify-content: flex-end;
+   margin-left: auto;
+   overflow: hidden;
+   height: 100vh;
+   transition: 0.5s;
+}
+
+.header-nav {
+   padding-right: 20px;
+}
+
+.nav-list {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   list-style: none;
+   height: 100%;
+   transition: 0.5s;
+}
+
+.nav-link {
+   padding: 0 15px;
+   line-height: 50px;
+   text-decoration: none;
+   font-size: 20px;
+   color: var(--color-font);
+   transition: 0.5s;
+}
+
+.nav-link:hover {
+   color: var(--color-gold);
+}
+
+.nav-list li {
+   height: 100%;
+}
+
+.nav-list a {
+   height: 100%;
+}
+
+.nav-link__last {
+   padding-right: 11px;
+}
+
+.header-switchs {
+   display: flex;
+   justify-content: flex-end;
+   align-items: center;
+   height: 50px;
+   width: 200px;
+   padding-right: 22px;
+   gap: 20px;
+}
+
+.header-switchs a{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+}
+
+.switchs{
+   display: flex;
+   align-items: center;
+   justify-content: flex-end;
+   width: 100px;
+}
+
+.sw-wrapper {
+   display: flex;
+   align-items: center;
+   color: var(--color-font);
+   width: 100%;
+   height: 100%;
+}
+
+.sw-eng {
+   padding-right: 10px;
+}
+
+.sw-eng:hover {
+   color: var(--btn-background)
+}
+
+.sw-ru {
+   padding-left: 10px;
+}
+
+.sw-ru:hover {
+   color: var(--btn-background)
+}
+
+.active {
+   color: var(--btn-background);
+}
+
+
+
+/* ==================== */
+@media (max-width:768px) {
+   .hamburger {
+      position: absolute;
+      z-index: 10;
+      top: 22px;
+      right: 64px;
+   }
+   .hamburger .line {
+      display: block;
+      margin: 9px auto;
+      background-color: var(--color-icon);
+      width: 50px;
+      height: 3px;
+      transition: all 0.3s ease-in-out;
+   }
+
+   .hamburger:hover {
+      cursor: pointer;
+   }
+
+    #hamburger.is-active .line:nth-child(2) {
+      opacity: 0;
+   }
+
+   #hamburger.is-active .line:nth-child(1) {
+      transform: translateY(12px) rotate(45deg);
+   }   
+
+   #hamburger.is-active .line:nth-child(3) {
+      transform: translateY(-12px) rotate(-45deg);
+   }
+   
+
+
+   .bg {
+      background-image: var(--background-image-768);
+      background-repeat: no-repeat;
+      background-size: 768px;
+   }
+
+   .header-logo {
+      margin-left: 60px;
+      z-index: 1;
+   }
+
+   .header-nav-wrapper {
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      display: block;
+      overflow: hidden;
+      height: 590px;
+      width: 100vw;
+   }
+
+   .header-nav {
+      position: absolute;
+      z-index: 9;
+      right: -620px;
+      top: 0;
+      background-color: var(--background-color);
+      height: 100vh;
+      width: 620px;
+      padding-right: 0;
+      transition: 0.5s;
+   }
+
+   .nav-list {
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+      list-style: none;
+      padding-top: 134px;
+      padding-left: 127px;
+   }
+
+   .nav-link {
+      line-height: 50px;
+      text-decoration: none;
+      font-size: 34.82px;
+      line-height: 72.55px;
+      color: var(--color-font);
+      transition: 0.2s;
+      padding: 0 0 16px 0;
+   }
+
+   .nav-list li {
+      height: 72.55px;
+   }
+   
+   .nav-list a {
+      height: 72.55px;
+   }
+
+   .header-switchs {
+      position: absolute;
+      top: 20px;
+      right: 150px;
+      height: 50px;
+      width: 170px;
+      padding: 0;
+   }
+   .header-switchs a{
+      padding-left: 20px;
+   }
+   
+}
+/* ==================== */
+
+
+.nav-wrapper--active {
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 8;
+}
+
+.header-nav--active {
+   right: 0;
+   transition: 0.5s;
+}

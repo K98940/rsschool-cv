@@ -1,0 +1,47 @@
+.section-video {
+   padding-top: 95px;
+}
+
+.video-wrapper {
+   position: relative;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 765px;
+   padding: 64px 20px 0px 20px;
+}
+
+.video-btn {
+   position: absolute;
+   background-color: transparent;
+   border: none;
+}
+
+.video-btn:hover {
+   cursor: pointer;
+}
+
+
+
+
+
+@media (max-width: 768px) {
+   .section-video {
+      padding-top: 78px;
+   }
+   
+   .video-wrapper {
+      height: 468px;
+      padding: 57px 0 0 0;
+   }
+
+   .video-wrapper img{
+      height: 100%;
+      width: 100%;
+   }   
+
+   .video-btn svg{
+      width: 64px;
+      height: 64px;
+   }
+}
