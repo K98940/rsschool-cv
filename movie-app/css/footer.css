@@ -1,0 +1,69 @@
+.footer {
+   flex: 0 0 100px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+
+   width: 100%;
+   padding: 2rem 5rem;
+   background-color: var(--item-bground-color);
+}
+
+.footer-github {
+   height: 100%;
+   transition: 0.2s;
+}
+
+.footer-github a{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+
+   padding: 1rem 1rem;
+   text-decoration: none;
+}
+
+.footer span{
+   color: var(--item-textColor);
+   font-size: 1rem;
+}
+
+.footer-github img {
+   height: 2rem;
+}
+
+.footer-github:hover,
+.footer-rsschool:hover{
+   border-radius: 10px;
+   background: linear-gradient(145deg, #3b3f70, #32355f);
+   box-shadow:  10px 10px 25px #21233f,
+                -10px -10px 25px #4d5393;
+}
+
+.footer-github:active,
+.footer-rsschool:active{
+   border-radius: 10px;
+   background: linear-gradient(145deg, #32355f, #3b3f70);
+   box-shadow:  10px 10px 25px #21233f,
+                -10px -10px 25px #4d5393;
+}
+
+.footer-rsschool {
+   height: 100%;
+   transition: 0.2s;
+}
+
+.footer-rsschool img{
+   height: 2rem;
+}
+
+.footer-rsschool a{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 100%;
+
+   padding: 1rem 1rem;
+   text-decoration: none;
+}
