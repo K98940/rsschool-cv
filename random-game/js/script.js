@@ -9,64 +9,104 @@ const maxY = coordContainer.bottom - 120
 const minX = coordContainer.x
 const maxX = coordContainer.x + coordContainer.width
 const field = [
-   [2, 0, 0, 0],
    [0, 0, 0, 0],
    [0, 0, 0, 0],
-   [0, 0, 0, 0]
+   [2, 0, 0, 2],
+   [2, 0, 0, 2]
 ]
 
+
+function init() { // расставить блоки по массиву
+   for (let i = 0; i < field.length; i++) {
+      for (let j = 0; j < field[i].length; j++) {
+         if (field[i][j] > 0) { // если элемент массива больше нуля - ставим блок в эту позицию
+            const item = document.createElement('div')
+            item.classList.add('blocks')
+            item.textContent = field[i][j]
+            item.setAttribute('data-xy', `${i}${j}`)
+            item.style.top = `${i * 100}px`
+            item.style.left = `${j * 100}px`
+            container.insertAdjacentElement('afterbegin', item)
+         }
+      }
+   }
+}
 
 
 function ArrowDown() {
    // сместить элементы массива вниз
-   for (let i = field.length - 2; i >= 0 ; i--) {
-      for (let j = 0; j < field[i].length - 1; j++) {
-         if (field[i + 1][j] === 0 && field[i][j] > 0) { // если нижняя клетка пустая, а верхняя не пустая
-            field[i + 1][j] = field[i][j]
-            field[i][j] = 0
+   for (let k = 0; k < field.length; k++) {
+      for (let i = field.length - 2; i >= 0; i--) {
+         for (let j = 0; j < field[i].length; j++) {
+            if (field[i + 1][j] === 0 && field[i][j] > 0) { // если нижняя клетка пустая, а верхняя не пустая
+               field[i + 1][j] = field[i][j]
+               field[i][j] = 0
 
-            // найти блок с атрибутом 'ij' и сместить вниз
-            block = document.querySelector('[data-xy="' + i + j + '"]')
-            block.dataset.xy = `${i + 1}${j}`
-            block.style.top = `${(i + 1) * 100}px`
-            console.log(block.dataset.xy)
+               // найти блок с атрибутом 'ij' и сместить вниз
+               block = document.querySelector('[data-xy="' + i + j + '"]')
+               block.dataset.xy = `${i + 1}${j}`
+               block.style.top = `${(i + 1) * 100}px`
+            }
          }
       }
    }
-
-   // blocks.forEach(elem => {
-   //    const coord = elem.getBoundingClientRect()
-   //    if (coord.top < maxY) {
-   //       elem.style.top = `${coord.top + 96}px`
-   //    }
-   // })
 }
 
 function ArrowUp() {
-   blocks.forEach(elem => {
-      const coord = elem.getBoundingClientRect()
-      if (coord.top > minY) {
-         elem.style.top = `${coord.top - 104}px`
+   // сместить элементы массива вверх
+   for (let k = 0; k < field.length; k++) {
+      for (let i = 1; i < field.length; i++) {
+         for (let j = 0; j < field[i].length; j++) {
+            if (field[i - 1][j] === 0 && field[i][j] > 0) { // если верхняя клетка пустая, а нижняя нет
+               field[i - 1][j] = field[i][j]
+               field[i][j] = 0
+
+               // найти блок с атрибутом 'ij' и сместить вверх
+               block = document.querySelector('[data-xy="' + i + j + '"]')
+               block.dataset.xy = `${i - 1}${j}`
+               block.style.top = `${(i - 1) * 100}px`
+            }
+         }
       }
-   })
+   }
 }
 
 function ArrowRight() {
-   blocks.forEach(elem => {
-      const coord = elem.getBoundingClientRect()
-      if (coord.x + 100 < maxX) {
-         elem.style.left = `${coord.x - coordContainer.x + 100}px`
+   // сместить элементы массива вправо
+   for (let k = 0; k < field.length; k++) {
+      for (let i = field.length - 1; i >= 0; i--) { // столбец
+         for (let j = 0; j < field[i].length; j++) { // строка
+            if (field[j][i + 1] === 0 && field[j][i] > 0) { // если правая клетка пустая, а левая нет
+               field[j][i + 1] = field[j][i]
+               field[j][i] = 0
+
+               // найти блок с атрибутом 'ij' и сместить вправо
+               block = document.querySelector('[data-xy="' + j + i + '"]')
+               block.dataset.xy = `${j}${i + 1}`
+               block.style.left = `${(i + 1) * 100}px`
+            }
+         }
       }
-   })
+   }
 }
 
 function ArrowLeft() {
-   blocks.forEach(elem => {
-      const coord = elem.getBoundingClientRect()
-      if (coord.x > minX) {
-         elem.style.left = `${coord.x - coordContainer.x - 100}px`
+   // сместить элементы массива влево
+   for (let k = 0; k < field.length; k++) {
+      for (let i = field.length - 1; i >= 0; i--) { // столбец
+         for (let j = 0; j < field[i].length; j++) { // строка
+            if (field[j][i - 1] === 0 && field[j][i] > 0) { // если левая клетка пустая, а правая нет
+               field[j][i - 1] = field[j][i]
+               field[j][i] = 0
+
+               // найти блок с атрибутом 'ij' и сместить влево
+               block = document.querySelector('[data-xy="' + j + i + '"]')
+               block.dataset.xy = `${j}${i - 1}`
+               block.style.left = `${(i - 1) * 100}px`
+            }
+         }
       }
-   })
+   }
 }
 
 function keyDown(key) {
@@ -85,3 +125,4 @@ function keyUp(key) {
 }
 
 window.addEventListener('keydown', keyDown)
+window.onload = init()

@@ -1,9 +1,10 @@
 :root {
    --sizeBlock: 100px;
+   --fontSize: 80px;
 }
 
 * {
-   font-size: var(--sizeBlock);
+   font-size: var(--fontSize);
    box-sizing: border-box;
    margin: 0;
    padding: 0;
@@ -22,12 +23,16 @@
 
 .blocks {
    position: absolute;
-   display: inline-block;
+   display: flex;
 
-   width: 1rem;
-   height: 1rem;
+   justify-content: center;
+   align-items: center;
+   width: var(--sizeBlock);
+   height: var(--sizeBlock);
+   overflow: hidden;
 
    outline: 4px solid rgb(55, 73, 4);
+   background-color: blanchedalmond;
 
    transition: 0.1s;
 }
