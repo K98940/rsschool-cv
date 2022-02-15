@@ -9,9 +9,9 @@ const maxY = coordContainer.bottom - 120
 const minX = coordContainer.x
 const maxX = coordContainer.x + coordContainer.width
 const field = [
-   [0, 0, 0, 0],
-   [0, 0, 0, 0],
    [2, 0, 0, 2],
+   [0, 0, 0, 0],
+   [0, 0, 0, 0],
    [2, 0, 0, 2]
 ]
 
@@ -36,17 +36,19 @@ function init() { // расставить блоки по массиву
 function ArrowDown() {
    // сместить элементы массива вниз
    for (let k = 0; k < field.length; k++) {
-      for (let i = field.length - 2; i >= 0; i--) {
-         for (let j = 0; j < field[i].length; j++) {
-            if (field[i + 1][j] === 0 && field[i][j] > 0) { // если нижняя клетка пустая, а верхняя не пустая
-               field[i + 1][j] = field[i][j]
-               field[i][j] = 0
+      for (let i = field.length - 2; i >= 0; i--) { // строка
+         for (let j = 0; j < field[i].length; j++) { // столбец
 
-               // найти блок с атрибутом 'ij' и сместить вниз
-               block = document.querySelector('[data-xy="' + i + j + '"]')
-               block.dataset.xy = `${i + 1}${j}`
-               block.style.top = `${(i + 1) * 100}px`
-            }
+            if (field[i + 1][j] != field[i][j]) continue // если нижняя и верхняя клетки не равны - пропускаем
+
+            console.log('enter')
+            field[i + 1][j] = field[i][j]
+            field[i][j] = 0
+
+            // найти блок с атрибутом 'ij' и сместить вниз
+            block = document.querySelector('[data-xy="' + i + j + '"]')
+            block.dataset.xy = `${i + 1}${j}`
+            block.style.top = `${(i + 1) * 100}px`
          }
       }
    }
