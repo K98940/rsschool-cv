@@ -10,8 +10,8 @@ const minX = coordContainer.x
 const maxX = coordContainer.x + coordContainer.width
 const field = [
    [2, 0, 0, 2],
-   [0, 0, 0, 0],
-   [0, 0, 0, 0],
+   [2, 0, 0, 0],
+   [2, 0, 0, 0],
    [2, 0, 0, 2]
 ]
 
@@ -39,16 +39,29 @@ function ArrowDown() {
       for (let i = field.length - 2; i >= 0; i--) { // строка
          for (let j = 0; j < field[i].length; j++) { // столбец
 
-            if (field[i + 1][j] != field[i][j]) continue // если нижняя и верхняя клетки не равны - пропускаем
-
-            console.log('enter')
-            field[i + 1][j] = field[i][j]
-            field[i][j] = 0
-
-            // найти блок с атрибутом 'ij' и сместить вниз
+            //if (field[i + 1][j] != field[i][j]) continue // если нижняя и верхняя клетки не равны - пропускаем
+            console.log('field [', i, ':', j, '] =  ', field[i][j])
             block = document.querySelector('[data-xy="' + i + j + '"]')
+            console.log(block)
+            if (block === null) continue
+
+            // переместить значение: если верхняя и нижняя ячейки совпадают то сложить их, иначе просто перенести из верхней в нижнюю
+            if (field[i + 1][j] === field[i][j]) {
+               field[i + 1][j] = field[i][j] * 2
+               field[i][j] = 0 // а текущий блок обнулить
+               // div с атрибутом 'ij' удалить
+               block.remove()
+               block = document.querySelector(`[data-xy="${i + 1}${j}"]`)
+               block.textContent = field[i + 1][j]
+            } else {
+               field[i + 1][j] = field[i][j]
+               field[i][j] = 0 // а текущий блок обнулить
+            }
+
+            // div с атрибутом 'ij' сместить вниз
             block.dataset.xy = `${i + 1}${j}`
             block.style.top = `${(i + 1) * 100}px`
+
          }
       }
    }
