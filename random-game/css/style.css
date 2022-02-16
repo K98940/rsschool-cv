@@ -32,7 +32,7 @@
    overflow: hidden;
 
    outline: 4px solid rgb(55, 73, 4);
-   background-color: blanchedalmond;
+   background-color: hsl(100, 98%, 46%);
 
    transition: 0.1s;
 }

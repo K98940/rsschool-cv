@@ -9,10 +9,10 @@ const maxY = coordContainer.bottom - 120
 const minX = coordContainer.x
 const maxX = coordContainer.x + coordContainer.width
 const field = [
-   [2, 0, 0, 2],
-   [2, 0, 0, 0],
-   [2, 0, 0, 0],
-   [2, 0, 0, 2]
+   [0, 0, 2, 0],
+   [0, 0, 2, 2],
+   [0, 0, 0, 0],
+   [0, 0, 0, 2]
 ]
 
 
@@ -36,31 +36,27 @@ function init() { // расставить блоки по массиву
 function ArrowDown() {
    // сместить элементы массива вниз
    for (let k = 0; k < field.length; k++) {
-      for (let i = field.length - 2; i >= 0; i--) { // строка
+      for (let i = field.length - 2; i >= 0; i--) { // строка, идем снизу вверх
          for (let j = 0; j < field[i].length; j++) { // столбец
-
-            //if (field[i + 1][j] != field[i][j]) continue // если нижняя и верхняя клетки не равны - пропускаем
-            console.log('field [', i, ':', j, '] =  ', field[i][j])
+            if (field[i][j] === 0) continue // если текущий элемент равен нулю, здесь делать нечего
             block = document.querySelector('[data-xy="' + i + j + '"]')
-            console.log(block)
-            if (block === null) continue
 
-            // переместить значение: если верхняя и нижняя ячейки совпадают то сложить их, иначе просто перенести из верхней в нижнюю
-            if (field[i + 1][j] === field[i][j]) {
-               field[i + 1][j] = field[i][j] * 2
+            if (field[i + 1][j] === field[i][j]) { // переместить значение: если верхняя и нижняя ячейки совпадают 
+               field[i + 1][j] = field[i][j] * 2 // то удвоить значение блока
                field[i][j] = 0 // а текущий блок обнулить
-               // div с атрибутом 'ij' удалить
-               block.remove()
-               block = document.querySelector(`[data-xy="${i + 1}${j}"]`)
-               block.textContent = field[i + 1][j]
-            } else {
-               field[i + 1][j] = field[i][j]
-               field[i][j] = 0 // а текущий блок обнулить
-            }
 
-            // div с атрибутом 'ij' сместить вниз
-            block.dataset.xy = `${i + 1}${j}`
-            block.style.top = `${(i + 1) * 100}px`
+               block.remove() // лишний div с атрибутом 'ij' удалить
+               block = document.querySelector(`[data-xy="${i + 1}${j}"]`) // а блоку ниже сделать
+               block.textContent = field[i + 1][j] // новое значение
+               block.style.backgroundColor = `hsl(${field[i + 1][j] * 50}, 98%, 46%)`
+            } else if (field[i + 1][j] === 0) { // иначе, если внизу ноль
+               field[i + 1][j] = field[i][j] // просто перенести из верхней ячейки в нижнюю
+               field[i][j] = 0 // а текущий блок обнулить
+            } else continue // если нижняя ячейка не пустая - div вниз не перемещаем
+
+
+            block.dataset.xy = `${i + 1}${j}` // изменить аттрибут
+            block.style.top = `${(i + 1) * 100}px` // div с атрибутом 'ij' сместить вниз
 
          }
       }
@@ -70,17 +66,27 @@ function ArrowDown() {
 function ArrowUp() {
    // сместить элементы массива вверх
    for (let k = 0; k < field.length; k++) {
-      for (let i = 1; i < field.length; i++) {
-         for (let j = 0; j < field[i].length; j++) {
-            if (field[i - 1][j] === 0 && field[i][j] > 0) { // если верхняя клетка пустая, а нижняя нет
-               field[i - 1][j] = field[i][j]
-               field[i][j] = 0
+      for (let i = 1; i < field.length; i++) { // строка, идем с 1 строки до последней
+         for (let j = 0; j < field[i].length; j++) { // столбец
+            if (field[i][j] === 0) continue // если текущий элемент равен нулю, здесь делать нечего
+            block = document.querySelector('[data-xy="' + i + j + '"]')
 
-               // найти блок с атрибутом 'ij' и сместить вверх
-               block = document.querySelector('[data-xy="' + i + j + '"]')
-               block.dataset.xy = `${i - 1}${j}`
-               block.style.top = `${(i - 1) * 100}px`
-            }
+            if (field[i - 1][j] === field[i][j]) { // переместить значение: если текущая и нижняя ячейки совпадают 
+               field[i - 1][j] = field[i][j] * 2 // то удвоить значение блока
+               field[i][j] = 0 // а текущий блок обнулить
+
+               block.remove() // лишний div с атрибутом 'ij' удалить
+               block = document.querySelector(`[data-xy="${i - 1}${j}"]`) // а блоку выше сделать
+               block.textContent = field[i - 1][j] // новое значение
+               block.style.backgroundColor = `hsl(${field[i - 1][j] * 50}, 98%, 46%)`
+            } else if (field[i - 1][j] === 0) { // иначе, если вверху ноль
+               field[i - 1][j] = field[i][j] // просто перенести из нижней ячейки в верхнюю
+               field[i][j] = 0 // а текущий блок обнулить
+            } else continue // если верхняя ячейка не пустая - div вверх не перемещаем
+
+            // найти блок с атрибутом 'ij' и сместить вверх
+            block.dataset.xy = `${i - 1}${j}`
+            block.style.top = `${(i - 1) * 100}px`
          }
       }
    }
@@ -89,17 +95,27 @@ function ArrowUp() {
 function ArrowRight() {
    // сместить элементы массива вправо
    for (let k = 0; k < field.length; k++) {
-      for (let i = field.length - 1; i >= 0; i--) { // столбец
-         for (let j = 0; j < field[i].length; j++) { // строка
-            if (field[j][i + 1] === 0 && field[j][i] > 0) { // если правая клетка пустая, а левая нет
-               field[j][i + 1] = field[j][i]
-               field[j][i] = 0
+      for (let i = field.length - 1; i >= 0; i--) { // столбец, идем с права на лево
+         for (let j = 0; j < field[i].length; j++) { // строка, идем с верху вниз
+            if (field[j][i] === 0) continue // если текущий элемент равен нулю, здесь делать нечего
+            block = document.querySelector('[data-xy="' + j + i + '"]')
 
-               // найти блок с атрибутом 'ij' и сместить вправо
-               block = document.querySelector('[data-xy="' + j + i + '"]')
-               block.dataset.xy = `${j}${i + 1}`
-               block.style.left = `${(i + 1) * 100}px`
-            }
+            if (field[j][i + 1] === field[j][i]) { // переместить если текущая ячейка и ячейка справа совпадают 
+               field[j][i + 1] = field[j][i] * 2 // то удвоить значение блока
+               field[j][i] = 0 // а текущий блок обнулить
+
+               block.remove() // лишний div с атрибутом 'ij' удалить
+               block = document.querySelector(`[data-xy="${j}${i + 1}"]`) // а блоку справа сделать
+               block.textContent = field[j][i + 1] // новое значение
+               block.style.backgroundColor = `hsl(${field[j][i + 1] * 50}, 98%, 46%)`
+            } else if (field[j][i + 1] === 0) { // иначе, если справа ноль
+               field[j][i + 1] = field[j][i] // просто перенести из текущей ячейки в правую
+               field[j][i] = 0 // а текущий блок обнулить
+            } else continue // если правая ячейка не пустая - div вправо не перемещаем
+
+            // найти блок с атрибутом 'ij' и сместить вправо
+            block.dataset.xy = `${j}${i + 1}`
+            block.style.left = `${(i + 1) * 100}px`
          }
       }
    }
@@ -108,30 +124,63 @@ function ArrowRight() {
 function ArrowLeft() {
    // сместить элементы массива влево
    for (let k = 0; k < field.length; k++) {
-      for (let i = field.length - 1; i >= 0; i--) { // столбец
-         for (let j = 0; j < field[i].length; j++) { // строка
-            if (field[j][i - 1] === 0 && field[j][i] > 0) { // если левая клетка пустая, а правая нет
-               field[j][i - 1] = field[j][i]
-               field[j][i] = 0
+      for (let i = 1; i < field.length; i++) { // столбец, идем слева на право
+         for (let j = 0; j < field[i].length; j++) { // строка, идем с верху вниз
+            if (field[j][i] === 0) continue // если текущий элемент равен нулю, здесь делать нечего
+            block = document.querySelector('[data-xy="' + j + i + '"]')
 
-               // найти блок с атрибутом 'ij' и сместить влево
-               block = document.querySelector('[data-xy="' + j + i + '"]')
-               block.dataset.xy = `${j}${i - 1}`
-               block.style.left = `${(i - 1) * 100}px`
-            }
+            if (field[j][i - 1] === field[j][i]) { // переместить если текущая ячейка и ячейка слева совпадают 
+               field[j][i - 1] = field[j][i] * 2 // то удвоить значение блока
+               field[j][i] = 0 // а текущий блок обнулить
+
+               block.remove() // лишний div с атрибутом 'ij' удалить
+               block = document.querySelector(`[data-xy="${j}${i - 1}"]`) // а блоку слева сделать
+               block.textContent = field[j][i - 1] // новое значение
+               block.style.backgroundColor = `hsl(${field[j][i - 1] * 50}, 98%, 46%)`
+            } else if (field[j][i - 1] === 0) { // иначе, если слева ноль
+               field[j][i - 1] = field[j][i] // просто перенести из текущей ячейки в левую
+               field[j][i] = 0 // а текущий блок обнулить
+            } else continue // если левая ячейка не пустая - div влево не перемещаем
+
+
+            // найти блок с атрибутом 'ij' и сместить влево
+            block.dataset.xy = `${j}${i - 1}`
+            block.style.left = `${(i - 1) * 100}px`
          }
       }
    }
 }
 
+
+
+function addNewBlock() { // добавить новый блок на игровое поле
+   function getRandomCell() { // получить случайные координаты для новго блока
+      let x = Math.random()
+      const arrEmpty = []
+
+      // сформировать массив индексов нулевых элементов (пустые ячейки игрового поля)
+      for (let i = 0; i < field.length; i++) {
+         for (let j = 0; j < field.length; j++) {
+            if (field[i][j] === 0) arrEmpty.push(`${i}${j}`)
+         }
+      }
+
+   }
+
+   console.log(getRandomCell())
+}
+
+
 function keyDown(key) {
    window.removeEventListener('keydown', keyDown)
    window.addEventListener('keyup', keyUp)
 
-   if (key.code === 'ArrowDown') { ArrowDown() }
-   if (key.code === 'ArrowUp') { ArrowUp() }
-   if (key.code === 'ArrowRight') { ArrowRight() }
-   if (key.code === 'ArrowLeft') { ArrowLeft() }
+   if (key.code === 'ArrowDown') ArrowDown()
+   if (key.code === 'ArrowUp') ArrowUp()
+   if (key.code === 'ArrowRight') ArrowRight()
+   if (key.code === 'ArrowLeft') ArrowLeft()
+
+   addNewBlock()
 }
 
 function keyUp(key) {
