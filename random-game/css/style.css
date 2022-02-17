@@ -1,6 +1,6 @@
 :root {
    --sizeBlock: 100px;
-   --fontSize: 80px;
+   --fontSize: 70px;
 }
 
 * {
@@ -31,8 +31,19 @@
    height: var(--sizeBlock);
    overflow: hidden;
 
-   outline: 4px solid rgb(55, 73, 4);
-   background-color: hsl(100, 98%, 46%);
+   background-color: hsl(100, 80%, 50%);
+   border-radius: 20%;
 
-   transition: 0.1s;
+   transition: 0.2s;
 }
+
+/* .score-board {
+   position: relative;
+   margin: 4px auto;
+   padding: 10px;
+
+   width: calc(4 * var(--sizeBlock));
+   height: calc(1 * var(--sizeBlock));
+
+   outline: 4px solid rgb(73, 4, 42);
+} */
