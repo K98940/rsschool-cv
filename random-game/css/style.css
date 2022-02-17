@@ -1,6 +1,6 @@
 :root {
    --sizeBlock: 100px;
-   --fontSize: 70px;
+   --fontSize: 50px;
 }
 
 * {
@@ -32,18 +32,46 @@
    overflow: hidden;
 
    background-color: hsl(100, 80%, 50%);
+   border: 10px solid white;
    border-radius: 20%;
 
    transition: 0.2s;
 }
 
-/* .score-board {
+ .score-board {
+   display: flex;
    position: relative;
-   margin: 4px auto;
-   padding: 10px;
 
+   justify-content: center;
+   align-items: center;
+   margin: 15px auto;
+   padding: 10px;
    width: calc(4 * var(--sizeBlock));
    height: calc(1 * var(--sizeBlock));
 
-   outline: 4px solid rgb(73, 4, 42);
-} */
+   outline: 4px solid black;
+}
+
+.score {
+   position: absolute;
+   top: 50%;
+   transform:translateY(-50%);
+
+   padding-left: 20px;
+}
+
+.score span {
+   padding-left: 0.5em;
+}
+
+.progress {
+   position: absolute;
+   
+   width: 0;
+   max-width: 400px;
+   height: 80%;
+   left: 1px;
+   right: 0;
+
+   margin: 0.2em 0;
+}

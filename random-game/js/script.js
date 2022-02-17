@@ -4,6 +4,9 @@ let block = ''
 let score = 0
 const container = document.querySelector('.container')
 const blocks = document.querySelectorAll('.blocks')
+const scoreSpan = document.querySelector('.score span')
+const progress = document.querySelector('.progress')
+
 const coordContainer = container.getBoundingClientRect()
 const minY = coordContainer.y
 const maxY = coordContainer.bottom - 120
@@ -18,7 +21,6 @@ const field = [
 
 
 function addBlock(index) { // index - индекс пустой ячейки
-   console.log(index)
    if (index === '-1') {
       window.removeEventListener('keydown', keyDown)
       alert('GAME OVER!')
@@ -30,7 +32,7 @@ function addBlock(index) { // index - индекс пустой ячейки
    item.textContent = field[index[0]][index[1]]
    item.setAttribute('data-xy', `${index[0]}${index[1]}`)
    item.classList.add('blocks')
-   
+
    item.style.top = `${index[0] * 100}px`
    item.style.left = `${index[1] * 100}px`
    container.insertAdjacentElement('afterbegin', item)
@@ -64,6 +66,7 @@ function ArrowDown() {
 
             if (field[i + 1][j] === field[i][j]) { // переместить значение: если верхняя и нижняя ячейки совпадают 
                score += field[i][j] // плюсуем очки
+
                field[i + 1][j] = field[i][j] * 2 // то удвоить значение блока
                field[i][j] = 0 // а текущий блок обнулить
 
@@ -95,6 +98,7 @@ function ArrowUp() {
 
             if (field[i - 1][j] === field[i][j]) { // переместить значение: если текущая и нижняя ячейки совпадают 
                score += field[i][j] // плюсуем очки
+
                field[i - 1][j] = field[i][j] * 2 // то удвоить значение блока
                field[i][j] = 0 // а текущий блок обнулить
 
@@ -124,7 +128,8 @@ function ArrowRight() {
             block = document.querySelector('[data-xy="' + j + i + '"]')
 
             if (field[j][i + 1] === field[j][i]) { // переместить если текущая ячейка и ячейка справа совпадают 
-               score += field[i][j] // плюсуем очки
+               score += field[j][i] // плюсуем очки
+
                field[j][i + 1] = field[j][i] * 2 // то удвоить значение блока
                field[j][i] = 0 // а текущий блок обнулить
 
@@ -154,7 +159,8 @@ function ArrowLeft() {
             block = document.querySelector('[data-xy="' + j + i + '"]')
 
             if (field[j][i - 1] === field[j][i]) { // переместить если текущая ячейка и ячейка слева совпадают 
-               score += field[i][j] // плюсуем очки
+               score += field[j][i] // плюсуем очки
+
                field[j][i - 1] = field[j][i] * 2 // то удвоить значение блока
                field[j][i] = 0 // а текущий блок обнулить
 
@@ -191,10 +197,8 @@ function addNewBlock() { // добавить новый блок на игров
       }
 
       x = arrEmpty.length === 0 ? -1 : x * arrEmpty.length // вернём минус 1 если массив пустой, т.е. нет пустых ячеек на поле
-      console.log('X = ', x)
       x = Math.floor(x) // получим случайный элемент из этого массива
-      console.log('floor(x) = ', x)
-      return x === -1 ? '-1' : ''+arrEmpty[x] // и вернем строку - значение индекса случайной пустой ячейки для массива field
+      return x === -1 ? '-1' : '' + arrEmpty[x] // и вернем строку - значение индекса случайной пустой ячейки для массива field
    }
 
    addBlock(getRandomCell())
@@ -210,6 +214,9 @@ function keyDown(key) {
    if (key.code === 'ArrowRight') ArrowRight()
    if (key.code === 'ArrowLeft') ArrowLeft()
 
+   scoreSpan.textContent = score
+   progress.style.width = `${score / 2048 * 399}px`
+   progress.style.backgroundColor = `hsl(${score / 5}, 80%, 50%)`
    setTimeout(addNewBlock, 500)
 }
 
