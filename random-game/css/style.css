@@ -1,6 +1,6 @@
 :root {
    --sizeBlock: 100px;
-   --fontSize: 50px;
+   --fontSize: 40px;
 }
 
 * {
@@ -12,13 +12,15 @@
 
 .container {
    position: relative;
-   margin: 4px auto;
+   margin: 10px auto;
    padding: 0;
 
    width: calc(4 * var(--sizeBlock));
    height: calc(4 * var(--sizeBlock));
 
-   outline: 4px solid black;
+   outline: 10px solid black;
+   box-shadow: 20px 20px 30px black;
+
 }
 
 .blocks {
@@ -27,15 +29,16 @@
 
    justify-content: center;
    align-items: center;
-   width: var(--sizeBlock);
-   height: var(--sizeBlock);
+   width: calc(var(--sizeBlock) - 10px);
+   height: calc(var(--sizeBlock) - 10px);
    overflow: hidden;
 
    background-color: hsl(100, 80%, 50%);
+   box-shadow: 5px 5px 10px hsl(100, 100%, 60%);
    border: 10px solid white;
    border-radius: 20%;
 
-   transition: 0.2s;
+   transition: 0.3s;
 }
 
  .score-board {
@@ -44,12 +47,12 @@
 
    justify-content: center;
    align-items: center;
-   margin: 15px auto;
+   margin: 35px auto;
    padding: 10px;
    width: calc(4 * var(--sizeBlock));
    height: calc(1 * var(--sizeBlock));
 
-   outline: 4px solid black;
+   outline: 10px solid black;
 }
 
 .score {
@@ -68,10 +71,8 @@
    position: absolute;
    
    width: 0;
-   max-width: 400px;
+   max-width: 398px;
    height: 80%;
    left: 1px;
    right: 0;
-
-   margin: 0.2em 0;
 }

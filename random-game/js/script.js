@@ -32,7 +32,6 @@ function addBlock(index) { // index - индекс пустой ячейки
    item.textContent = field[index[0]][index[1]]
    item.setAttribute('data-xy', `${index[0]}${index[1]}`)
    item.classList.add('blocks')
-
    item.style.top = `${index[0] * 100}px`
    item.style.left = `${index[1] * 100}px`
    container.insertAdjacentElement('afterbegin', item)
@@ -74,6 +73,7 @@ function ArrowDown() {
                block = document.querySelector(`[data-xy="${i + 1}${j}"]`) // а блоку ниже сделать
                block.textContent = field[i + 1][j] // новое значение
                block.style.backgroundColor = `hsl(${field[i + 1][j] * 50}, 80%, 50%)`
+               block.style.boxShadow = `5px 5px 10px hsl(${field[i + 1][j] * 50}, 100%, 60%)`
             } else if (field[i + 1][j] === 0) { // иначе, если внизу ноль
                field[i + 1][j] = field[i][j] // просто перенести из верхней ячейки в нижнюю
                field[i][j] = 0 // а текущий блок обнулить
@@ -106,6 +106,7 @@ function ArrowUp() {
                block = document.querySelector(`[data-xy="${i - 1}${j}"]`) // а блоку выше сделать
                block.textContent = field[i - 1][j] // новое значение
                block.style.backgroundColor = `hsl(${field[i - 1][j] * 50}, 80%, 50%)`
+               block.style.boxShadow = `5px 5px 10px hsl(${field[i - 1][j] * 50}, 100%, 60%)`
             } else if (field[i - 1][j] === 0) { // иначе, если вверху ноль
                field[i - 1][j] = field[i][j] // просто перенести из нижней ячейки в верхнюю
                field[i][j] = 0 // а текущий блок обнулить
@@ -137,6 +138,7 @@ function ArrowRight() {
                block = document.querySelector(`[data-xy="${j}${i + 1}"]`) // а блоку справа сделать
                block.textContent = field[j][i + 1] // новое значение
                block.style.backgroundColor = `hsl(${field[j][i + 1] * 50}, 80%, 50%)`
+               block.style.boxShadow = `5px 5px 10px hsl(${field[j][i + 1] * 50}, 100%, 60%)`
             } else if (field[j][i + 1] === 0) { // иначе, если справа ноль
                field[j][i + 1] = field[j][i] // просто перенести из текущей ячейки в правую
                field[j][i] = 0 // а текущий блок обнулить
@@ -168,6 +170,7 @@ function ArrowLeft() {
                block = document.querySelector(`[data-xy="${j}${i - 1}"]`) // а блоку слева сделать
                block.textContent = field[j][i - 1] // новое значение
                block.style.backgroundColor = `hsl(${field[j][i - 1] * 50}, 80%, 50%)`
+               block.style.boxShadow = `5px 5px 10px hsl(${field[j][i - 1] * 50}, 100%, 60%)`
             } else if (field[j][i - 1] === 0) { // иначе, если слева ноль
                field[j][i - 1] = field[j][i] // просто перенести из текущей ячейки в левую
                field[j][i] = 0 // а текущий блок обнулить
@@ -217,6 +220,14 @@ function keyDown(key) {
    scoreSpan.textContent = score
    progress.style.width = `${score / 2048 * 399}px`
    progress.style.backgroundColor = `hsl(${score / 5}, 80%, 50%)`
+
+   if (score > 2047) {
+      window.removeEventListener('keydown', keyDown)
+      alert('YOU WON!')
+      console.log('YOU WON!')
+      return
+   }
+
    setTimeout(addNewBlock, 500)
 }
 
