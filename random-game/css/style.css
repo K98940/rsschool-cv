@@ -29,8 +29,11 @@ body {
    width: calc(4 * var(--sizeBlock) + var(--containerPadding));
    height: calc(4 * var(--sizeBlock) + var(--containerPadding));
 
-   outline: 10px solid black;
+   outline: 10px solid rgb(200, 200, 200);
+   background-color: hsl(100, 40%, 50%);
    box-shadow: 20px 20px 30px black;
+
+   transition: 10s;
 }
 @media (max-width: 425px) {
    .container {
@@ -71,10 +74,10 @@ body {
    align-items: center;
    margin: 35px auto;
    padding: 10px;
-   width: calc(4 * var(--sizeBlock));
+   width: calc(4 * var(--sizeBlock) + var(--containerPadding));
    height: calc(1 * var(--sizeBlock));
 
-   outline: 10px solid black;
+   outline: 10px solid rgb(200, 200, 200);
 }
 @media (max-width: 425px) {
    .score-board {
@@ -84,6 +87,7 @@ body {
       height: calc(10vh);
    
       outline: none;
+      /* color: hsl(356, 100%, 97%); */
    }
    }
 
@@ -103,7 +107,7 @@ body {
    position: absolute;
    
    width: 0;
-   max-width: 398px;
+   max-width: calc(4 * var(--sizeBlock) + var(--containerPadding) - 2px);
    height: 80%;
    left: 1px;
    right: 0;

@@ -7,7 +7,8 @@ let touchEndX = 0
 
 let block = ''
 let BlockWidth = 0
-let score = 0
+let score = 0 // очки
+let step = 0 // шаги
 const container = document.querySelector('.container')
 const blocks = document.querySelector('.blocks')
 const scoreSpan = document.querySelector('.score span')
@@ -235,8 +236,10 @@ function keyDown(key) {
    if (Arrow(key.code)) { // ф. Arrow должна вернуть true если была нажат клавиша на которую у неё есть обработчик
       setTimeout(addNewBlock, 500) // через 500мс добавить на поле новый блок
       scoreSpan.textContent = score // обновить очки
-      progress.style.width = `${score / 2048 * 399}px` // обновить прогреес бар
-      progress.style.backgroundColor = `hsl(${score / 5}, 80%, 50%)` // и обновить цвет прогресс бара
+
+      progress.style.width = `${score / 2048 * coordContainer.width}px` // обновить длину прогресс бара
+      progress.style.background = `linear-gradient(90deg, hsl(${50 + score / 5.6}, 80%, 20%) 0%, hsl(${50 + score / 5.6}, 80%, 40%) 50%, hsl(${50 + score / 5.6}, 80%, 60%) 100%)` // обновить цвет прогресс бара
+      container.style.backgroundColor = `hsl(${score * 10}, 40%, 50%)` // и обновить фоновый цвет игрового поля
 
       if (score > 2047) {
          window.removeEventListener('keydown', keyDown)
