@@ -1,6 +1,17 @@
 :root {
    --sizeBlock: 100px;
    --fontSize: 40px;
+   --containerPadding: 20px;
+}
+@media (max-width: 425px) {
+   :root {
+      --sizeBlock: calc(100vw / 4 - 10px);
+      --fontSize: 35px;
+   }
+}
+
+body {
+   overflow: hidden;
 }
 
 * {
@@ -12,16 +23,27 @@
 
 .container {
    position: relative;
-   margin: 10px auto;
+   margin: 20px auto;
    padding: 0;
 
-   width: calc(4 * var(--sizeBlock));
-   height: calc(4 * var(--sizeBlock));
+   width: calc(4 * var(--sizeBlock) + var(--containerPadding));
+   height: calc(4 * var(--sizeBlock) + var(--containerPadding));
 
    outline: 10px solid black;
    box-shadow: 20px 20px 30px black;
-
 }
+@media (max-width: 425px) {
+   .container {
+      margin: 0;
+      width: calc(100vw);
+      height: calc(100vw);
+
+      background-color: rgb(0, 0, 0);
+      outline: none;
+      box-shadow: none;
+   }
+}
+
 
 .blocks {
    position: absolute;
@@ -54,6 +76,16 @@
 
    outline: 10px solid black;
 }
+@media (max-width: 425px) {
+   .score-board {
+      margin: 0;
+      padding: 10px;
+      width: calc(100vw);
+      height: calc(10vh);
+   
+      outline: none;
+   }
+   }
 
 .score {
    position: absolute;
