@@ -2,6 +2,7 @@
    --sizeBlock: 100px;
    --fontSize: 40px;
    --containerPadding: 20px;
+   --sizeShadow: 10px;
 }
 @media (max-width: 425px) {
    :root {
@@ -47,6 +48,23 @@ body {
    }
 }
 
+.newblock {
+   position: absolute;
+   display: flex;
+
+   justify-content: center;
+   align-items: center;
+   width: calc(var(--sizeBlock) - 10px);
+   height: calc(var(--sizeBlock) - 10px);
+   overflow: hidden;
+
+   background-color: hsl(100, 80%, 50%);
+   box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 2) hsl(100, 100%, 80%);
+   border: 10px solid white;
+   border-radius: 20%;
+
+   transition: 0.3s;
+}
 
 .blocks {
    position: absolute;
@@ -59,7 +77,7 @@ body {
    overflow: hidden;
 
    background-color: hsl(100, 80%, 50%);
-   box-shadow: 5px 5px 10px hsl(100, 100%, 60%);
+   box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 2) hsl(100, 100%, 60%);
    border: 10px solid white;
    border-radius: 20%;
 
@@ -123,7 +141,21 @@ body {
    left: 0;
 
    transition: 1s;
-   /* background-image: url('../assets/jpg/win.jpg'); */
    background-repeat: no-repeat;
    background-size: contain;
+}
+
+@keyframes anime {
+   0% {
+      border: 10px solid transparent;
+      /* box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 1.5) transparent; */
+
+      color: transparent;
+   }
+   100% {
+      border: 10px solid hsl(100, 80%, 100%);
+      /* box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 1.5) hsl(100, 100%, 60%); */
+
+      color: hsl(100, 80%, 0%);
+     }
 }

@@ -1,10 +1,11 @@
 'use strict'
 
-let touchStartY = 0
+let touchStartY = 0 // переменные для вычисления направления свайпа на тачскрине
 let touchEndY = 0
 let touchStartX = 0
 let touchEndX = 0
 
+let xColor = 0 // множитель для цвета блока
 let block = ''
 let BlockWidth = 0
 let score = 0 // очки
@@ -14,11 +15,23 @@ const blocks = document.querySelector('.blocks')
 const scoreSpan = document.querySelector('.score span')
 const progress = document.querySelector('.progress')
 const containerPadding = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--containerPadding')) // внутренний отступ в игровом поле
+const sizeShadow = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sizeShadow')) // размер тени от блоков
 
 const coordContainer = container.getBoundingClientRect()
-const eventTouch = { // событие от тачскрина
+const eventTouch = { // объект - событие от тачскрина
    'code': ''
 }
+const arrColor = {
+   '4': 40,
+   '8': 60,
+   '16': 170,
+   '32': 190,
+   '64': 210,
+   '128': 280,
+   '256': 300,
+   '512': 340,
+}
+
 const field = [
    [0, 0, 0, 0],
    [0, 0, 0, 0],
@@ -50,9 +63,10 @@ function addBlock(index) { // index - индекс пустой ячейки
    field[index[0]][index[1]] = 2
    item.textContent = field[index[0]][index[1]]
    item.setAttribute('data-xy', `${index[0]}${index[1]}`)
-   item.classList.add('blocks')
+   item.classList.add('newblock')
    item.style.top = `${index[0] * BlockWidth + containerPadding}px`
    item.style.left = `${index[1] * BlockWidth + containerPadding}px`
+   item.style.animation = `anime 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards`
    container.insertAdjacentElement('afterbegin', item)
 }
 
@@ -119,8 +133,8 @@ function Arrow(keyCode) {
                      block.remove() // лишний div с атрибутом 'ij' удалить
                      block = document.querySelector(`[data-xy="${i - 1}${j}"]`) // а блоку выше сделать
                      block.textContent = field[i - 1][j] // новое значение
-                     block.style.backgroundColor = `hsl(${field[i - 1][j] * 50}, 80%, 50%)`
-                     block.style.boxShadow = `5px 5px 10px hsl(${field[i - 1][j] * 50}, 100%, 60%)`
+                     block.style.backgroundColor = `hsl(${arrColor[field[i - 1][j]]}, 80%, 50%)`
+                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[i - 1][j]]}, 100%, 80%)`
                   } else if (field[i - 1][j] === 0) { // иначе, если вверху ноль
                      field[i - 1][j] = field[i][j] // просто перенести из нижней ячейки в верхнюю
                      field[i][j] = 0 // а текущий блок обнулить
@@ -151,8 +165,8 @@ function Arrow(keyCode) {
                      block.remove() // лишний div с атрибутом 'ij' удалить
                      block = document.querySelector(`[data-xy="${i + 1}${j}"]`) // а блоку ниже сделать
                      block.textContent = field[i + 1][j] // новое значение
-                     block.style.backgroundColor = `hsl(${field[i + 1][j] * 50}, 80%, 50%)`
-                     block.style.boxShadow = `5px 5px 10px hsl(${field[i + 1][j] * 50}, 100%, 60%)`
+                     block.style.backgroundColor = `hsl(${arrColor[field[i + 1][j]]}, 80%, 50%)`
+                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[i + 1][j]]}, 100%, 80%)`
                   } else if (field[i + 1][j] === 0) { // иначе, если внизу ноль
                      field[i + 1][j] = field[i][j] // просто перенести из верхней ячейки в нижнюю
                      field[i][j] = 0 // а текущий блок обнулить
@@ -184,8 +198,8 @@ function Arrow(keyCode) {
                      block.remove() // лишний div с атрибутом 'ij' удалить
                      block = document.querySelector(`[data-xy="${j}${i + 1}"]`) // а блоку справа сделать
                      block.textContent = field[j][i + 1] // новое значение
-                     block.style.backgroundColor = `hsl(${field[j][i + 1] * 50}, 80%, 50%)`
-                     block.style.boxShadow = `5px 5px 10px hsl(${field[j][i + 1] * 50}, 100%, 60%)`
+                     block.style.backgroundColor = `hsl(${arrColor[field[j][i + 1]]}, 80%, 50%)`
+                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[j][i + 1]]}, 100%, 80%)`
                   } else if (field[j][i + 1] === 0) { // иначе, если справа ноль
                      field[j][i + 1] = field[j][i] // просто перенести из текущей ячейки в правую
                      field[j][i] = 0 // а текущий блок обнулить
@@ -216,8 +230,8 @@ function Arrow(keyCode) {
                      block.remove() // лишний div с атрибутом 'ij' удалить
                      block = document.querySelector(`[data-xy="${j}${i - 1}"]`) // а блоку слева сделать
                      block.textContent = field[j][i - 1] // новое значение
-                     block.style.backgroundColor = `hsl(${field[j][i - 1] * 50}, 80%, 50%)`
-                     block.style.boxShadow = `5px 5px 10px hsl(${field[j][i - 1] * 50}, 100%, 60%)`
+                     block.style.backgroundColor = `hsl(${arrColor[field[j][i - 1]]}, 80%, 50%)`
+                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[j][i - 1]]}, 100%, 80%)`
                   } else if (field[j][i - 1] === 0) { // иначе, если слева ноль
                      field[j][i - 1] = field[j][i] // просто перенести из текущей ячейки в левую
                      field[j][i] = 0 // а текущий блок обнулить
@@ -254,9 +268,8 @@ function keyDown(key) {
       progress.style.background = `linear-gradient(90deg, hsl(${50 + score / 5.6}, 80%, 20%) 0%, hsl(${50 + score / 5.6}, 80%, 40%) 50%, hsl(${50 + score / 5.6}, 80%, 60%) 100%)` // обновить цвет прогресс бара
       container.style.backgroundColor = `hsl(${score * 10}, 40%, 50%)` // и обновить фоновый цвет игрового поля
 
-      if (score > 2047) {
+      if (score > 2047) { // если набрали больше 2047 очков игра завершает с аргументом true - победа
          stopGame(true)
-         return
       }
    }
 }
