@@ -87,7 +87,6 @@ body {
       height: calc(10vh);
    
       outline: none;
-      /* color: hsl(356, 100%, 97%); */
    }
    }
 
@@ -111,4 +110,20 @@ body {
    height: 80%;
    left: 1px;
    right: 0;
+}
+
+
+.gameover{
+   position: absolute;
+   z-index: 2;
+   overflow: hidden;
+   width: 100vw;
+   height: 100vh;
+   top: 0;
+   left: 0;
+
+   transition: 1s;
+   /* background-image: url('../assets/jpg/win.jpg'); */
+   background-repeat: no-repeat;
+   background-size: contain;
 }

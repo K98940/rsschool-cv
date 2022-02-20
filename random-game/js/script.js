@@ -27,10 +27,23 @@ const field = [
 ]
 
 
+function stopGame(win) {
+   const url = win ? `url("./assets/jpg/win.jpg")` : `url("./assets/jpg/lose.jpg")`
+   const gameOver = document.createElement('div')
+
+   window.removeEventListener('keydown', keyDown)
+   window.removeEventListener('keyup', keyUp)
+   window.removeEventListener('touchstart', touchStart)
+   window.removeEventListener('touchend', touchEnd)
+   gameOver.classList.add('gameover')
+   gameOver.style.backgroundImage = url
+   document.body.insertAdjacentElement('afterbegin', gameOver)
+}
+
+
 function addBlock(index) { // index - индекс пустой ячейки
    if (index === '-1') {
-      window.removeEventListener('keydown', keyDown)
-      alert('GAME OVER!')
+      stopGame(false)
       return
    }
    const item = document.createElement('div')
@@ -242,8 +255,7 @@ function keyDown(key) {
       container.style.backgroundColor = `hsl(${score * 10}, 40%, 50%)` // и обновить фоновый цвет игрового поля
 
       if (score > 2047) {
-         window.removeEventListener('keydown', keyDown)
-         alert('YOU WON!')
+         stopGame(true)
          return
       }
    }
