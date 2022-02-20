@@ -21,7 +21,7 @@ const coordContainer = container.getBoundingClientRect()
 const eventTouch = { // объект - событие от тачскрина
    'code': ''
 }
-const arrColor = {
+const arrColor = { // цвет блока зависит от его значения
    '4': 40,
    '8': 60,
    '16': 170,
@@ -30,6 +30,12 @@ const arrColor = {
    '128': 280,
    '256': 300,
    '512': 340,
+}
+const arrColorField = { // цвет игрового поля зависит от кол-ва свободных ячеек (с шагом в 16)
+   '15': 100, '14': 116, '13': 132, '12': 148,
+   '11': 164, '10': 180, '9': 196, '8': 212,
+   '7': 228, '6': 244, '5': 260, '4': 286,
+   '3': 306, '2': 326, '1': 356,
 }
 
 const field = [
@@ -68,6 +74,7 @@ function addBlock(index) { // index - индекс пустой ячейки
    item.style.left = `${index[1] * BlockWidth + containerPadding}px`
    item.style.animation = `anime 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards`
    container.insertAdjacentElement('afterbegin', item)
+   window.addEventListener('keydown', keyDown) // вернуть слушатель нажатия клавиш
 }
 
 
@@ -105,6 +112,7 @@ function addNewBlock() { // добавить новый блок на игров
       }
 
       x = arrEmpty.length === 0 ? -1 : x * arrEmpty.length // вернём минус 1 если массив пустой, т.е. нет пустых ячеек на поле
+      container.style.backgroundColor = `hsl(${arrColorField['' + arrEmpty.length]}, 40%, 50%)` // обновить фоновый цвет игрового поля
       x = Math.floor(x) // получим случайный элемент из этого массива
       return x === -1 ? '-1' : '' + arrEmpty[x] // и вернем строку - значение индекса случайной пустой ячейки для массива field
    }
@@ -266,7 +274,6 @@ function keyDown(key) {
 
       progress.style.width = `${score / 2048 * coordContainer.width}px` // обновить длину прогресс бара
       progress.style.background = `linear-gradient(90deg, hsl(${50 + score / 5.6}, 80%, 20%) 0%, hsl(${50 + score / 5.6}, 80%, 40%) 50%, hsl(${50 + score / 5.6}, 80%, 60%) 100%)` // обновить цвет прогресс бара
-      container.style.backgroundColor = `hsl(${score * 10}, 40%, 50%)` // и обновить фоновый цвет игрового поля
 
       if (score > 2047) { // если набрали больше 2047 очков игра завершает с аргументом true - победа
          stopGame(true)
@@ -276,7 +283,6 @@ function keyDown(key) {
 
 function keyUp(key) {
    window.removeEventListener('keyup', keyUp)
-   window.addEventListener('keydown', keyDown)
 }
 
 
