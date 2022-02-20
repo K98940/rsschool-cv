@@ -159,3 +159,22 @@ body {
       color: hsl(100, 80%, 0%);
      }
 }
+
+.mute {
+   display: block;
+   margin: 40px auto;
+   padding: 0.3em 2.5em 0.3em 0.5em;
+
+   background-image: url("../assets/icons/sound_on.png");
+   background-position: right;
+   background-repeat: no-repeat;
+   background-size: contain;
+
+   box-shadow: 10px 10px 10px black;
+}
+.mute__on {
+   background-image: url("../assets/icons/sound_off.png");
+   margin: 50px auto;
+
+   box-shadow: none;
+}

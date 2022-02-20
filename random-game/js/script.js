@@ -14,8 +14,12 @@ const container = document.querySelector('.container')
 const blocks = document.querySelector('.blocks')
 const scoreSpan = document.querySelector('.score span')
 const progress = document.querySelector('.progress')
+const mute = document.querySelector('.mute')
 const containerPadding = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--containerPadding')) // внутренний отступ в игровом поле
 const sizeShadow = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sizeShadow')) // размер тени от блоков
+const audioMove = new Audio() // да, у нас будет раздражающий звук
+const audioBonus = new Audio()
+audioBonus.src = './assets/sounds/02.wav'
 
 const coordContainer = container.getBoundingClientRect()
 const eventTouch = { // объект - событие от тачскрина
@@ -133,6 +137,7 @@ function Arrow(keyCode) {
                   block = document.querySelector('[data-xy="' + i + j + '"]')
 
                   if (field[i - 1][j] === field[i][j]) { // переместить значение: если текущая и нижняя ячейки совпадают 
+                     if (mute.dataset.mute === 'false') audioBonus.play() // издадим како-нибудь звук
                      score += field[i][j] // плюсуем очки
 
                      field[i - 1][j] = field[i][j] * 2 // то удвоить значение блока
@@ -165,6 +170,7 @@ function Arrow(keyCode) {
                   block = document.querySelector('[data-xy="' + i + j + '"]')
 
                   if (field[i + 1][j] === field[i][j]) { // переместить значение: если верхняя и нижняя ячейки совпадают 
+                     if (mute.dataset.mute === 'false') audioBonus.play() // издадим како-нибудь звук
                      score += field[i][j] // плюсуем очки
 
                      field[i + 1][j] = field[i][j] * 2 // то удвоить значение блока
@@ -198,6 +204,7 @@ function Arrow(keyCode) {
                   block = document.querySelector('[data-xy="' + j + i + '"]')
 
                   if (field[j][i + 1] === field[j][i]) { // переместить если текущая ячейка и ячейка справа совпадают 
+                     if (mute.dataset.mute === 'false') audioBonus.play() // издадим како-нибудь звук
                      score += field[j][i] // плюсуем очки
 
                      field[j][i + 1] = field[j][i] * 2 // то удвоить значение блока
@@ -230,6 +237,7 @@ function Arrow(keyCode) {
                   block = document.querySelector('[data-xy="' + j + i + '"]')
 
                   if (field[j][i - 1] === field[j][i]) { // переместить если текущая ячейка и ячейка слева совпадают 
+                     if (mute.dataset.mute === 'false') audioBonus.play() // издадим како-нибудь звук
                      score += field[j][i] // плюсуем очки
 
                      field[j][i - 1] = field[j][i] * 2 // то удвоить значение блока
@@ -256,7 +264,9 @@ function Arrow(keyCode) {
    }
 
    if (keyObj[keyCode]) { // если у объекта есть ключ для нажатой клавиши, выполняем функцию и возвращаем true
-      keyObj[keyCode]()
+      audioMove.src = './assets/sounds/01.wav' // издадим како-нибудь звук
+      if (mute.dataset.mute === 'false') audioMove.play() // издадим како-нибудь звук
+      keyObj[keyCode]() // и сработает обработчик нажатия / свайпа
       return true
    } else { // иначе возвращаем false, так исключаем все необрабатываемые клавиши
       return false
@@ -319,8 +329,19 @@ function touchEnd(event) { // обработка свайпов на тачск�
 }
 
 
+function changeMute() {
+   if (mute.dataset.mute === 'false') {
+      mute.dataset.mute = 'true'
+      mute.classList.add('mute__on')
+   } else {
+      mute.dataset.mute = 'false'
+      mute.classList.remove('mute__on')
+   }
+}
+
 
 window.addEventListener('keydown', keyDown)
 window.addEventListener('touchstart', touchStart)
 window.addEventListener('touchend', touchEnd)
+mute.addEventListener('click', changeMute)
 window.onload = init()
