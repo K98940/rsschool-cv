@@ -7,21 +7,22 @@ let touchEndX = 0
 
 let xColor = 0 // множитель для цвета блока
 let block = ''
-let BlockWidth = 0
 let score = 0 // очки
 let step = 0 // шаги
-const container = document.querySelector('.container')
-const blocks = document.querySelector('.blocks')
+let blocks = ''
+
+const board = document.querySelector('.board')
 const scoreSpan = document.querySelector('.score span')
 const progress = document.querySelector('.progress')
 const mute = document.querySelector('.mute')
-const containerPadding = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--containerPadding')) // внутренний отступ в игровом поле
-const sizeShadow = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--sizeShadow')) // размер тени от блоков
 const audioMove = new Audio() // да, у нас будет раздражающий звук
 const audioBonus = new Audio()
 audioBonus.src = './assets/sounds/02.wav'
 
-const coordContainer = container.getBoundingClientRect()
+const coordboard = board.getBoundingClientRect() // координаты игрового поля
+const BlockWidth = (coordboard.width - 50) / 4 // ширина (и высота) отдельного блока (50 вычитается для паддинга игрового поля)
+console.log(BlockWidth)
+
 const eventTouch = { // объект - событие от тачскрина
    'code': ''
 }
@@ -38,8 +39,8 @@ const arrColor = { // цвет блока зависит от его значе�
 const arrColorField = { // цвет игрового поля зависит от кол-ва свободных ячеек (с шагом в 16)
    '15': 100, '14': 116, '13': 132, '12': 148,
    '11': 164, '10': 180, '9': 196, '8': 212,
-   '7': 228, '6': 244, '5': 260, '4': 286,
-   '3': 306, '2': 326, '1': 356,
+   '7': 228, '6': 250, '5': 280, '4': 316,
+   '3': 336, '2': 346, '1': 356,
 }
 
 const field = [
@@ -74,10 +75,10 @@ function addBlock(index) { // index - индекс пустой ячейки
    item.textContent = field[index[0]][index[1]]
    item.setAttribute('data-xy', `${index[0]}${index[1]}`)
    item.classList.add('newblock')
-   item.style.top = `${index[0] * BlockWidth + containerPadding}px`
-   item.style.left = `${index[1] * BlockWidth + containerPadding}px`
+   item.style.top = `${index[0] * BlockWidth + 25}px`
+   item.style.left = `${index[1] * BlockWidth + 25}px`
    item.style.animation = `anime 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards`
-   container.insertAdjacentElement('afterbegin', item)
+   board.insertAdjacentElement('afterbegin', item)
    window.addEventListener('keydown', keyDown) // вернуть слушатель нажатия клавиш
 }
 
@@ -92,10 +93,9 @@ function init() { // расставить блоки по массиву, обн
             item.classList.add('blocks')
             item.textContent = field[i][j]
             item.setAttribute('data-xy', `${i}${j}`)
-            container.insertAdjacentElement('afterbegin', item)
-            BlockWidth = document.querySelector('.blocks').getBoundingClientRect().width + 10 // ширина (и высота) блока
-            item.style.top = `${containerPadding + i * BlockWidth}px`
-            item.style.left = `${containerPadding + j * BlockWidth}px`
+            board.insertAdjacentElement('afterbegin', item)
+            item.style.top = `${25 + i * BlockWidth}px`
+            item.style.left = `${25 + j * BlockWidth}px`
          }
       }
    }
@@ -116,7 +116,7 @@ function addNewBlock() { // добавить новый блок на игров
       }
 
       x = arrEmpty.length === 0 ? -1 : x * arrEmpty.length // вернём минус 1 если массив пустой, т.е. нет пустых ячеек на поле
-      container.style.backgroundColor = `hsl(${arrColorField['' + arrEmpty.length]}, 40%, 50%)` // обновить фоновый цвет игрового поля
+      board.style.backgroundColor = `hsl(${arrColorField['' + arrEmpty.length]}, 40%, 50%)` // обновить фоновый цвет игрового поля
       x = Math.floor(x) // получим случайный элемент из этого массива
       return x === -1 ? '-1' : '' + arrEmpty[x] // и вернем строку - значение индекса случайной пустой ячейки для массива field
    }
@@ -147,7 +147,7 @@ function Arrow(keyCode) {
                      block = document.querySelector(`[data-xy="${i - 1}${j}"]`) // а блоку выше сделать
                      block.textContent = field[i - 1][j] // новое значение
                      block.style.backgroundColor = `hsl(${arrColor[field[i - 1][j]]}, 80%, 50%)`
-                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[i - 1][j]]}, 100%, 80%)`
+                     block.style.boxShadow = `10px 10px 10px hsl(${arrColor[field[i - 1][j]]}, 100%, 80%)`
                   } else if (field[i - 1][j] === 0) { // иначе, если вверху ноль
                      field[i - 1][j] = field[i][j] // просто перенести из нижней ячейки в верхнюю
                      field[i][j] = 0 // а текущий блок обнулить
@@ -155,7 +155,7 @@ function Arrow(keyCode) {
 
                   // найти блок с атрибутом 'ij' и сместить вверх
                   block.dataset.xy = `${i - 1}${j}`
-                  block.style.top = `${(i - 1) * BlockWidth + containerPadding}px`
+                  block.style.top = `${(i - 1) * BlockWidth + 25}px`
                }
             }
          }
@@ -180,7 +180,7 @@ function Arrow(keyCode) {
                      block = document.querySelector(`[data-xy="${i + 1}${j}"]`) // а блоку ниже сделать
                      block.textContent = field[i + 1][j] // новое значение
                      block.style.backgroundColor = `hsl(${arrColor[field[i + 1][j]]}, 80%, 50%)`
-                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[i + 1][j]]}, 100%, 80%)`
+                     block.style.boxShadow = `10px 10px 10px hsl(${arrColor[field[i + 1][j]]}, 100%, 80%)`
                   } else if (field[i + 1][j] === 0) { // иначе, если внизу ноль
                      field[i + 1][j] = field[i][j] // просто перенести из верхней ячейки в нижнюю
                      field[i][j] = 0 // а текущий блок обнулить
@@ -188,7 +188,7 @@ function Arrow(keyCode) {
 
 
                   block.dataset.xy = `${i + 1}${j}` // изменить аттрибут
-                  block.style.top = `${(i + 1) * BlockWidth + containerPadding}px` // div с атрибутом 'ij' сместить вниз
+                  block.style.top = `${(i + 1) * BlockWidth + 25}px` // div с атрибутом 'ij' сместить вниз
 
                }
             }
@@ -214,7 +214,7 @@ function Arrow(keyCode) {
                      block = document.querySelector(`[data-xy="${j}${i + 1}"]`) // а блоку справа сделать
                      block.textContent = field[j][i + 1] // новое значение
                      block.style.backgroundColor = `hsl(${arrColor[field[j][i + 1]]}, 80%, 50%)`
-                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[j][i + 1]]}, 100%, 80%)`
+                     block.style.boxShadow = `10px 10px 10px hsl(${arrColor[field[j][i + 1]]}, 100%, 80%)`
                   } else if (field[j][i + 1] === 0) { // иначе, если справа ноль
                      field[j][i + 1] = field[j][i] // просто перенести из текущей ячейки в правую
                      field[j][i] = 0 // а текущий блок обнулить
@@ -222,7 +222,7 @@ function Arrow(keyCode) {
 
                   // найти блок с атрибутом 'ij' и сместить вправо
                   block.dataset.xy = `${j}${i + 1}`
-                  block.style.left = `${(i + 1) * BlockWidth + containerPadding}px`
+                  block.style.left = `${(i + 1) * BlockWidth + 25}px`
                }
             }
          }
@@ -247,7 +247,7 @@ function Arrow(keyCode) {
                      block = document.querySelector(`[data-xy="${j}${i - 1}"]`) // а блоку слева сделать
                      block.textContent = field[j][i - 1] // новое значение
                      block.style.backgroundColor = `hsl(${arrColor[field[j][i - 1]]}, 80%, 50%)`
-                     block.style.boxShadow = `${sizeShadow}px ${sizeShadow}px ${sizeShadow * 1.5}px hsl(${arrColor[field[j][i - 1]]}, 100%, 80%)`
+                     block.style.boxShadow = `10px 10px 10px hsl(${arrColor[field[j][i - 1]]}, 100%, 80%)`
                   } else if (field[j][i - 1] === 0) { // иначе, если слева ноль
                      field[j][i - 1] = field[j][i] // просто перенести из текущей ячейки в левую
                      field[j][i] = 0 // а текущий блок обнулить
@@ -256,7 +256,7 @@ function Arrow(keyCode) {
 
                   // найти блок с атрибутом 'ij' и сместить влево
                   block.dataset.xy = `${j}${i - 1}`
-                  block.style.left = `${(i - 1) * BlockWidth + containerPadding}px`
+                  block.style.left = `${(i - 1) * BlockWidth + 25}px`
                }
             }
          }
@@ -282,7 +282,7 @@ function keyDown(key) {
       setTimeout(addNewBlock, 500) // через 500мс добавить на поле новый блок
       scoreSpan.textContent = score // обновить очки
 
-      progress.style.width = `${score / 2048 * coordContainer.width}px` // обновить длину прогресс бара
+      progress.style.width = `${score / 2048 * coordboard.width}px` // обновить длину прогресс бара
       progress.style.background = `linear-gradient(90deg, hsl(${50 + score / 5.6}, 80%, 20%) 0%, hsl(${50 + score / 5.6}, 80%, 40%) 50%, hsl(${50 + score / 5.6}, 80%, 60%) 100%)` // обновить цвет прогресс бара
 
       if (score > 2047) { // если набрали больше 2047 очков игра завершает с аргументом true - победа

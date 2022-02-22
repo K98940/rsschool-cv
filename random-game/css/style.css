@@ -1,13 +1,9 @@
 :root {
-   --sizeBlock: 100px;
    --fontSize: 40px;
-   --containerPadding: 20px;
-   --sizeShadow: 10px;
 }
 @media (max-width: 425px) {
    :root {
-      --sizeBlock: calc(100vw / 4 - 10px);
-      --fontSize: 35px;
+      --fontSize: 30px;
    }
 }
 
@@ -23,12 +19,21 @@ body {
 }
 
 .container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: flex-start;
+
+   height: 100vh;
+}
+
+.board {
    position: relative;
    margin: 20px auto;
    padding: 0;
 
-   width: calc(4 * var(--sizeBlock) + var(--containerPadding) + var(--containerPadding));
-   height: calc(4 * var(--sizeBlock) + var(--containerPadding) + var(--containerPadding));
+   width: 525px; /* размер поля = 4 блока х 100px + отступы 125px (5 х 25px) */
+   flex: 0 0 525px; 
 
    outline: 10px solid rgb(200, 200, 200);
    background-color: hsl(100, 33%, 50%); /* 357 - максимум */
@@ -37,10 +42,10 @@ body {
    transition: 5s;
 }
 @media (max-width: 425px) {
-   .container {
+   .board {
       margin: 0;
-      width: calc(100vw);
-      height: calc(100vw);
+      width: 100vw; /* поле во всю ширину экрана */
+      flex: 0 0 100vw; 
 
       background-color: rgb(0, 0, 0);
       outline: none;
@@ -54,13 +59,12 @@ body {
 
    justify-content: center;
    align-items: center;
-   width: calc(var(--sizeBlock) - 10px);
-   height: calc(var(--sizeBlock) - 10px);
+   width: calc((100% - 125px) / 4);
+   height: calc((100% - 125px) / 4);
    overflow: hidden;
 
    background-color: hsl(100, 80%, 50%);
-   box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 2) hsl(100, 100%, 80%);
-   border: 10px solid white;
+   box-shadow: 10px 10px 10px hsl(100, 100%, 80%);
    border-radius: 20%;
 
    transition: 0.3s;
@@ -72,13 +76,13 @@ body {
 
    justify-content: center;
    align-items: center;
-   width: calc(var(--sizeBlock) - 10px);
-   height: calc(var(--sizeBlock) - 10px);
+   width: calc((100% - 125px) / 4);
+   height: calc((100% - 125px) / 4);
    overflow: hidden;
 
    background-color: hsl(100, 80%, 50%);
-   box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 2) hsl(100, 100%, 60%);
-   border: 10px solid white;
+   box-shadow: 10px 10px 10px hsl(100, 100%, 80%);
+   border: 10px solid hsla(0, 0%, 100%, 0.5);
    border-radius: 20%;
 
    transition: 0.3s;
@@ -92,8 +96,8 @@ body {
    align-items: center;
    margin: 35px auto;
    padding: 10px;
-   width: calc(4 * var(--sizeBlock) + var(--containerPadding) + var(--containerPadding));
-   height: calc(1 * var(--sizeBlock));
+   width: 525px;
+   height: 50px;
 
    outline: 10px solid rgb(200, 200, 200);
 }
@@ -124,12 +128,15 @@ body {
    position: absolute;
    
    width: 0;
-   max-width: calc(4 * var(--sizeBlock) + var(--containerPadding) - 2px);
+   max-width: calc(100% - 2px);
    height: 100%;
    left: 1px;
    right: 0;
 }
 
+.empty-space {
+   flex: 1 1 100%;
+}
 
 .gameover{
    position: absolute;
@@ -148,22 +155,21 @@ body {
 @keyframes anime {
    0% {
       border: 10px solid transparent;
-      /* box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 1.5) transparent; */
-
       color: transparent;
-   }
+}
    100% {
-      border: 10px solid hsl(100, 80%, 100%);
-      /* box-shadow: var(--sizeShadow) var(--sizeShadow) calc(var(--sizeShadow) * 1.5) hsl(100, 100%, 60%); */
-
+      border: 10px solid hsla(0, 0%, 100%, 0.5);
       color: hsl(100, 80%, 0%);
-     }
+   }
 }
 
 .mute {
+   flex: 0 0 1.5em;
    display: block;
-   margin: 40px auto;
-   padding: 0.3em 2.5em 0.3em 0.5em;
+
+   margin: 10px auto;
+   padding: 0.1em 2.5em 0.1em 0.5em;
+   overflow: hidden;
 
    background-image: url("../assets/icons/sound_on.png");
    background-position: right;
@@ -174,7 +180,7 @@ body {
 }
 .mute__on {
    background-image: url("../assets/icons/sound_off.png");
-   margin: 50px auto;
+   margin: 5px 0;
 
    box-shadow: none;
 }
