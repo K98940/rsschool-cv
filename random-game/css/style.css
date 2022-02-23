@@ -26,6 +26,11 @@ body {
 
    height: 100vh;
 }
+@media (max-width: 425px) {
+   .container {
+      height: 100%;
+   }
+}
 
 .board {
    position: relative;
