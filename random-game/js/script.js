@@ -11,6 +11,7 @@ let score = 0 // очки
 let step = 0 // шаги
 let blocks = ''
 
+const container = document.querySelector('.container')
 const board = document.querySelector('.board')
 const scoreSpan = document.querySelector('.score span')
 const progress = document.querySelector('.progress')
@@ -283,12 +284,13 @@ function keyDown(key) {
       scoreSpan.textContent = score // обновить очки
 
       progress.style.width = `${score / 2048 * coordboard.width}px` // обновить длину прогресс бара
-      progress.style.background = `linear-gradient(90deg, hsl(${50 + score / 5.6}, 80%, 20%) 0%, hsl(${50 + score / 5.6}, 80%, 40%) 50%, hsl(${50 + score / 5.6}, 80%, 60%) 100%)` // обновить цвет прогресс бара
+      progress.style.backgroundColor = `hsl(${50 + score / 20}, 80%, 60%)` // обновить цвет прогресс бара
 
       if (score > 2047) { // если набрали больше 2047 очков игра завершает с аргументом true - победа
          stopGame(true)
       }
    }
+   // debug.textContent = debug.getBoundingClientRect().height
 }
 
 function keyUp(key) {

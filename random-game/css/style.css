@@ -3,12 +3,17 @@
 }
 @media (max-width: 425px) {
    :root {
-      --fontSize: 30px;
+      --fontSize: 5vw;
    }
+}
+
+html {
+   height: 100%;
 }
 
 body {
    overflow: hidden;
+   height: 100%;
 }
 
 * {
@@ -23,12 +28,15 @@ body {
    flex-direction: column;
    align-items: center;
    justify-content: flex-start;
+   margin: 0 auto;
 
-   height: 100vh;
+   width: 525px; /* размер поля = 4 блока х 100px + отступы 125px (5 х 25px) */
+   height: 100%;
 }
 @media (max-width: 425px) {
    .container {
       height: 100%;
+      width: 100vw;
    }
 }
 
@@ -37,14 +45,14 @@ body {
    margin: 20px auto;
    padding: 0;
 
-   width: 525px; /* размер поля = 4 блока х 100px + отступы 125px (5 х 25px) */
+   width: 100%;
    flex: 0 0 525px; 
 
    outline: 10px solid rgb(200, 200, 200);
    background-color: hsl(100, 33%, 50%); /* 357 - максимум */
    box-shadow: 20px 20px 30px black;
 
-   transition: 5s;
+   transition: 3s;
 }
 @media (max-width: 425px) {
    .board {
@@ -52,7 +60,6 @@ body {
       width: 100vw; /* поле во всю ширину экрана */
       flex: 0 0 100vw; 
 
-      background-color: rgb(0, 0, 0);
       outline: none;
       box-shadow: none;
    }
@@ -99,10 +106,10 @@ body {
 
    justify-content: center;
    align-items: center;
-   margin: 35px auto;
+   margin: 5px auto;
    padding: 10px;
    width: 525px;
-   height: 50px;
+   flex: 0 0 50px;
 
    outline: 10px solid rgb(200, 200, 200);
 }
@@ -110,8 +117,8 @@ body {
    .score-board {
       margin: 0;
       padding: 10px;
-      width: calc(100vw);
-      height: calc(10vh);
+      width: calc(100vw - 50px);
+      flex: 0 0 50px;
    
       outline: none;
    }
@@ -134,13 +141,14 @@ body {
    
    width: 0;
    max-width: calc(100% - 2px);
-   height: 100%;
+   height: calc(100% - 2px);
    left: 1px;
    right: 0;
 }
 
 .empty-space {
-   flex: 1 1 100%;
+   flex: 1 0 auto;
+   background-color: aqua;
 }
 
 .gameover{
@@ -169,8 +177,9 @@ body {
 }
 
 .mute {
-   flex: 0 0 1.5em;
+   flex: 0 0 1em;
    display: block;
+   min-height: 1.6em;
 
    margin: 10px auto;
    padding: 0.1em 2.5em 0.1em 0.5em;
@@ -180,6 +189,7 @@ body {
    background-position: right;
    background-repeat: no-repeat;
    background-size: contain;
+   font-size: 0.8em;
 
    box-shadow: 10px 10px 10px black;
 }
