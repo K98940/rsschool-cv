@@ -163,7 +163,31 @@ body {
    transition: 1s;
    background-repeat: no-repeat;
    background-size: contain;
+   background-position: center;
 }
+
+.gamelose{
+   background-image: url("../assets/jpg/lose.jpg");
+   background-color: black;
+}
+@media (max-width: 425px) {
+   .gamelose{
+      background-image: url("../assets/jpg/lose_320.jpg");
+      background-color: black;
+   }
+}
+
+.gamewin{
+   background-image: url("../assets/jpg/win.jpg");
+   background-color: rgb(159, 15, 208);
+}
+@media (max-width: 425px) {
+   .gamewin{
+      background-color: rgb(159, 15, 208);
+      background-image: url("../assets/jpg/win_320.jpg");
+   }
+}
+
 
 @keyframes anime {
    0% {

@@ -19,6 +19,7 @@ const mute = document.querySelector('.mute')
 const audioMove = new Audio() // да, у нас будет раздражающий звук
 const audioBonus = new Audio()
 audioBonus.src = './assets/sounds/02.wav'
+audioMove.src = './assets/sounds/01.wav'
 
 const coordboard = board.getBoundingClientRect() // координаты игрового поля
 const BlockWidth = (coordboard.width - 50) / 4 // ширина (и высота) отдельного блока (50 вычитается для паддинга игрового поля)
@@ -53,7 +54,6 @@ const field = [
 
 
 function stopGame(win) {
-   const url = win ? `url("./assets/jpg/win.jpg")` : `url("./assets/jpg/lose.jpg")`
    const gameOver = document.createElement('div')
 
    window.removeEventListener('keydown', keyDown)
@@ -61,7 +61,11 @@ function stopGame(win) {
    window.removeEventListener('touchstart', touchStart)
    window.removeEventListener('touchend', touchEnd)
    gameOver.classList.add('gameover')
-   gameOver.style.backgroundImage = url
+   if (win) {
+      gameOver.classList.add('gamewin')
+   } else {
+      gameOver.classList.add('gamelose')
+   }
    document.body.insertAdjacentElement('afterbegin', gameOver)
 }
 
@@ -265,7 +269,6 @@ function Arrow(keyCode) {
    }
 
    if (keyObj[keyCode]) { // если у объекта есть ключ для нажатой клавиши, выполняем функцию и возвращаем true
-      audioMove.src = './assets/sounds/01.wav' // издадим како-нибудь звук
       if (mute.dataset.mute === 'false') audioMove.play() // издадим како-нибудь звук
       keyObj[keyCode]() // и сработает обработчик нажатия / свайпа
       return true
