@@ -1,24 +1,25 @@
-Konstantin Shumkin
+# Konstantin Shumkin
 
-Contacts
-Location: Omsk, Russia
-Discord: Konstantin(@K98940)
-Email: pv1xxb@yandex.ru
-GitHub: https://github.com/K98940
+### Contacts
+- Location: Omsk, Russia
+- Discord: Konstantin(@K98940)
+- Email: pv1xxb@yandex.ru
+- GitHub: [K98940](https://github.com/K98940)
 
- About Me
+### About Me
 I've got to break free
 
-Skills
-Markdown (basic)
-Git (basic)
+### Skills
+- Markdown (basic)
+- Git (basic)
 
- Code Example
+### Code Example
 
-My projects
+### My projects
+- [CV](https://github.com/K98940/rsschool-cv/blob/gh-pages/cv.md)
 
- Education
-Siberian Professional College
+### Education
+- Siberian Professional College
 
- English
+### English
 A1
