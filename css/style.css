@@ -137,3 +137,15 @@ h2 {
 .hoverable:hover {
    filter: grayscale(0);
 }
+
+.code-wrapper {
+   padding: 10px 20px;
+   width: fit-content;
+
+   background-image: url("../assets/img/lines.png");
+   background-repeat: repeat-y;
+}
+
+.code-example {
+   color: #606060;
+}
